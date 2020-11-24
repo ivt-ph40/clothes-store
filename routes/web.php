@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    
 });
+// Route::get('/contacts', 'ContactController@showContactForm')->name('show.contact');
+// Route::post('/contacts', 'ContactController@sendMail')->name('send-contact');
