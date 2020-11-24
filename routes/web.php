@@ -14,3 +14,5 @@
 Route::get('/', function () {
     
 });
+// Route::get('/contacts', 'ContactController@showContactForm')->name('show.contact');
+// Route::post('/contacts', 'ContactController@sendMail')->name('send-contact');
