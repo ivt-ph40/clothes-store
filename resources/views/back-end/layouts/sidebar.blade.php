@@ -25,8 +25,8 @@
         </a>
         <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="">Xem danh sách</a>
-            <a class="collapse-item" href="">Thêm</a>
+          <a class="collapse-item" href="{{ route('categories.index') }}">Xem danh sách</a>
+            <a class="collapse-item" href="{{ route('categories.create') }}">Thêm</a>
           </div>
         </div>
       </li>
