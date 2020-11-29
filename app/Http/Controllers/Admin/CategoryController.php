@@ -15,14 +15,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(10);
+        $categories = Category::with('children')->where('parent_id', 0)->get();
+        dd($categories->toArray());
         foreach ($categories as $cate) {
             if($cate['parent_id'] == 0 || $cate['parent_id'] == null){
-                $cate['parent_id'] = "";
+                $cate['parent_name'] = "";
             } else {
-                $cate['parent_id'] = Category::find($cate['parent_id'])->name;
+                $cate['parent_name'] = Category::find($cate['parent_id'])->name;
             }
         };
+        // dd($categories);
         return view('back-end.categories.index', compact('categories'));
     }
 
@@ -97,7 +99,15 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::find($id)->delete();
+
+        $cateDel = Category::find($id);
+        $allCate = Category::all();
+        foreach($allCate as $value){
+            if ($value->parent_id == $cateDel->id){
+                return redirect()->back()->with(['error' => 'Danh mục này đang có Danh mục con, không thể xoá']);
+            }
+           
+        }
         return redirect()->route('categories.index');
     }
 }
