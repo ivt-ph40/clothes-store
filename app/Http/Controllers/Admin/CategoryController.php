@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -15,15 +16,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('children')->where('parent_id', 0)->get();
-        dd($categories->toArray());
-        foreach ($categories as $cate) {
-            if($cate['parent_id'] == 0 || $cate['parent_id'] == null){
-                $cate['parent_name'] = "";
-            } else {
-                $cate['parent_name'] = Category::find($cate['parent_id'])->name;
-            }
-        };
+        $categories = Category::with('children')->where('parent_id', 0)->paginate(3);
+        // dd($categories->toArray());
+        // dd($categories->toArray());
+        // foreach ($categories as $cate) {
+        //     if($cate['parent_id'] == 0 || $cate['parent_id'] == null){
+        //         $cate['parent_name'] = "";
+        //     } else {
+        //         $cate['parent_name'] = Category::find($cate['parent_id'])->name;
+        //     }
+        // };
         // dd($categories);
         return view('back-end.categories.index', compact('categories'));
     }
@@ -46,7 +48,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $data = $request->only('name', 'parent_id');
         Category::create($data);
@@ -106,8 +108,8 @@ class CategoryController extends Controller
             if ($value->parent_id == $cateDel->id){
                 return redirect()->back()->with(['error' => 'Danh mục này đang có Danh mục con, không thể xoá']);
             }
-           
         }
+        Category::find($id)->delete();
         return redirect()->route('categories.index');
     }
 }

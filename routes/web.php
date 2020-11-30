@@ -18,3 +18,4 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard'); //DashBoard
 Route::resource('categories', 'Admin\CategoryController'); //Category
+Route::resource('products', 'Admin\ProductController'); //Product
