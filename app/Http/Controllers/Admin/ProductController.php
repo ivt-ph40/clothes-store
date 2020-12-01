@@ -19,8 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category', 'images', 'size')->paginate(10);
-        // dd($products->toArray());
+        $products = Product::with('category', 'productImage', 'size')->paginate(10);
         return view('back-end.products.index', compact('products'));
     }
 
@@ -33,7 +32,6 @@ class ProductController extends Controller
     {
         $sizes = Size::all();
         $categories = Category::where('parent_id', '!=', 0)->get();
-        // dd($categories);
         return view('back-end.products.create', compact('sizes', 'categories'));
     }
 
@@ -46,18 +44,16 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // dd($data);
         if ($request->hasFile('images')){
             $name = rand(1,9999) . '-' .$request->file('images')->getClientOriginalName(); //Thiết lập tên cho ảnh
             $request->file('images')->move(public_path('/images'), $name); //Lưu ảnh với tên vừa tạo vào thư mục /img
-             $product_images['path'] = '/images/'.$name; //Tạo đường dẫn ảnh vào để lưu vào DB
-            //  dd($name);
-            $productID = Product::create($data)->id; //Lưu data vào bảng product và lấy product id
-            $product_images['product_id'] = $productID; //Gán product id cho product_id ở bảng product_detail
-            ProductImage::create($product_images); //Lưu data vào bảng product_detail
+             $product_images['path'] = '/images/'.$name;                   //Tạo đường dẫn ảnh vào để lưu vào DB
+            $productID = Product::create($data)->id;                       //Lưu data vào bảng product và lấy product id
+            $product_images['product_id'] = $productID;                    //Gán product id cho product_id ở bảng product_detail
+            ProductImage::create($product_images);                         //Lưu data vào bảng product_detail
         }
         $id = $request->only('size_id');
-        for ($i=1; $i <= count($id['size_id']); $i++) { 
+        for ($i=1; $i <= count($id['size_id']); $i++) {                     //Tạo các record khi có Product ID
             $product_sizes['product_id'] = $productID;
             $product_sizes['size_id'] = $i;
             ProductSize::create($product_sizes);
@@ -73,7 +69,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::with('productImage', 'size')->find($id);
+        return view('back-end.products.show', compact('product'));
     }
 
     /**

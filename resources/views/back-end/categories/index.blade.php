@@ -93,7 +93,7 @@
         @endforeach
     </tbody>
 </table>
-
-{{ $categories->links() }}
+{{-- 
+{{ $categories->links() }} --}}
 
 @endsection

@@ -23,9 +23,9 @@
         @foreach ($products as $product)
         <tr>
             <th scope="row">{{$product->id}}</th>
-            <td>{{$product->name}}</td>
+            <td><a href="{{route('products.show', $product->id)}}">{{$product->name}}</a></td>
             <td>
-                @foreach ($product->images as $image)
+                @foreach ($product->productImage as $image)
                 <img src="{{asset($image->path)}}" alt="" width="80px">
                 @endforeach
             </td>

@@ -53,7 +53,7 @@
             <div class="form-group">
                 @if (!$errors->has('size_id'))
                 <label for="">Size <i style="color:red">*</i></label>
-                <select class="selectpicker form-control col-2" multiple name="size_id[]">
+                <select class="selectpicker form-control col-3" multiple name="size_id[]">
                     @foreach ($sizes as $size)
                     <option value="{{$size->id}}">{{$size->name}}</option>
                     @endforeach
@@ -79,24 +79,26 @@
                 <p id="" class="invalid-feedback">{{ $errors->first('image') }}</p>
                 @endif
             </div>
-        </div>
 
-        <div class="col-md-6">
             <div class="form-group">
                 @if (!$errors->has('description'))
                 <label for="">Mô tả <i style="color:red">*</i></label>
-                <textarea class="form-control summernote" name="description" id="" rows="5"></textarea>
+                <textarea class="form-control" name="description" id="description" rows="5"></textarea>
                 @else
                 <label for="">Mô tả <i style="color:red">*</i></label>
                 <textarea class="form-control is-invalid" name="description" id="" rows="5"></textarea>
                 <p id="" class="invalid-feedback">{{ $errors->first('description') }}</p>
                 @endif
             </div>
+        </div>
+
+        <div class="col-md-6">
+            
 
             <div class="form-group">
                 @if (!$errors->has('detail'))
                 <label for="">Chi tiết Sản phẩm <i style="color:red">*</i></label>
-                <textarea class="form-control summernote" name="detail" id="" rows="5"></textarea>
+                <textarea class="form-control" name="detail" id="detail" rows="5"></textarea>
                 @else
                 <label for="">Chi tiết Sản phẩm <i style="color:red">*</i></label>
                 <textarea class="form-control is-invalid" name="detail" id="" rows="5"></textarea>
@@ -116,18 +118,12 @@
     <script>
     $(document).ready(function() {
         $('.selectpicker').selectpicker();
-        $('.summernote').summernote({
-            tabsize: 2,
-            height: 150,
-            toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-            ]
+        $('#description').summernote({
+            height: 200,
+        });
+        $('#detail').summernote({
+            height: 590,
+            
         });
     });
 </script>

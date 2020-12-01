@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('children')->where('parent_id', 0)->paginate(3);
+        $categories = Category::with('children')->where('parent_id', 0)->get();
         // dd($categories->toArray());
         // dd($categories->toArray());
         // foreach ($categories as $cate) {
@@ -86,7 +86,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $data = $request->only('name', 'parent_id');
         Category::find($id)->update($data);
