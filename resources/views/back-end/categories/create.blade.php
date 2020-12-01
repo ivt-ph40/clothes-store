@@ -6,7 +6,7 @@
         @csrf
         @if (!$errors->has('name'))
         <div class="form-group">
-          <label for="">Tên danh mục</label>
+          <label for="">Tên danh mục <i style="color:red">*</i></label>
           <input type="text" name="name" id="" class="form-control" placeholder="">
         </div>
         <div class="form-group">
@@ -20,7 +20,7 @@
         @else
 
         <div class="form-group">
-          <label for="">Tên danh mục</label>
+          <label for="">Tên danh mục <i style="color:red">*</i></label>
           <input type="text" name="name" id="" class="form-control is-invalid" placeholder="">
           <p id="" class="invalid-feedback">{{ $errors->first('name') }}</p>
         </div>

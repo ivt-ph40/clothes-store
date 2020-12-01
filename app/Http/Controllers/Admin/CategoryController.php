@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('children')->where('parent_id', 0)->get();
+        $categories = Category::with('children')->where('parent_id', 0)->paginate(1);
         // dd($categories->toArray());
         // dd($categories->toArray());
         // foreach ($categories as $cate) {

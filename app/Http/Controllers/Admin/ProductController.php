@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category', 'productImage', 'size')->paginate(10);
+        $products = Product::with('category', 'productImage', 'size')->orderBy('id', 'desc')->paginate(10);
         return view('back-end.products.index', compact('products'));
     }
 
@@ -81,7 +81,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::where('parent_id', '!=', 0)->get();
+        $product = Product::with('size', 'productImage')->find($id);
+        $sizes = Size::all();
+        // dd($product);
+        return view('back-end.products.edit', compact('product', 'categories', 'sizes'));
     }
 
     /**
@@ -104,6 +108,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id)->delete();
+        return redirect()->route('products.index');
     }
 }
