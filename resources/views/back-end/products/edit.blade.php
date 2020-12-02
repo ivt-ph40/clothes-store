@@ -55,14 +55,11 @@
                 <label for="">Size <i style="color:red">*</i></label>
                 <select class="selectpicker form-control col-3" multiple name="size_id[]">
                     @foreach ($sizes as $size)
-                    <option value="{{$size->id}}" class="size">{{$size->name}}</option>
-                        {{-- @foreach ($product->size as $p_size)
-                            @if (!$p_size->id == $size->id)
-                                <option value="{{$size->id}}">{{$size->name}}</option>
-                            @else
-                                <option value="{{$size->id}}" selected>{{$size->name}}</option>
-                            @endif
-                        @endforeach --}}
+                    @if ($product->size->firstWhere('id', $size->id))
+                        <option value="{{$size->id}}" selected>{{$size->name}}</option>
+                    @else
+                        <option value="{{$size->id}}">{{$size->name}}</option>
+                    @endif
                     @endforeach
                 </select>
                 @else
