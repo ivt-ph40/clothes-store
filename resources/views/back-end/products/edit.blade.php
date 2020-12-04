@@ -5,8 +5,9 @@
 
 @section('content')
     <h1 class="h3 mb-3 text-gray-800">Thêm sản phẩm</h1>
-<form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('products.update', $product->id)}}" method="post" enctype="multipart/form-data">
     @csrf
+    @method('put')
     <div class="row mb-3">
         <div class="col-md-6">
             <div class="form-group">

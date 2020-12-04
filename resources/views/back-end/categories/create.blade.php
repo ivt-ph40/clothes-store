@@ -18,10 +18,10 @@
           </select>
         </div>
         @else
-
+        {{-- return when invalid --}}
         <div class="form-group">
           <label for="">Tên danh mục <i style="color:red">*</i></label>
-          <input type="text" name="name" id="" class="form-control is-invalid" placeholder="">
+          <input type="text" name="name" id="" class="form-control is-invalid" placeholder="" value="{{old('name')}}">
           <p id="" class="invalid-feedback">{{ $errors->first('name') }}</p>
         </div>
         <div class="form-group">
