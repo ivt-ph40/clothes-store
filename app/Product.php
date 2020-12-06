@@ -20,11 +20,7 @@ class Product extends Model
     }
     public function size()
     {
-        return $this->belongsToMany('App\Size', 'product_sizes', 'product_id', 'size_id');
-    }
-    public function productSize()
-    {
-        return $this->hasMany('App\ProductSize');
+        return $this->belongsToMany('App\Size', 'product_sizes', 'product_id', 'size_id')->withPivot('quantities');
     }
     public function comment()
     {

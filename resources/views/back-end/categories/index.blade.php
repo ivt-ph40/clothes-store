@@ -20,7 +20,7 @@
         @foreach ($categories as $cate)
         <tr>
             <th scope="row">{{$cate->id}}</th>
-            <td>{{$cate->name}}</td>
+            <th style="font-size: 20px" onclick = "openList1()">{{$cate->name}}</th>
             <td class="d-flex">
                 <a href="{{ route('categories.edit', $cate->id) }}" class="btn btn-outline-info btn-sm mr-1">
                     <i class="fas fa-pencil-alt"></i>
@@ -93,6 +93,4 @@
         @endforeach
     </tbody>
 </table>
-
-
 @endsection

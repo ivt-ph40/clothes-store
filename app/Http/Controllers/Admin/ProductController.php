@@ -8,6 +8,7 @@ use App\Size;
 use App\Category;
 use App\ProductImage;
 use App\ProductSize;
+use DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 
@@ -121,5 +122,32 @@ class ProductController extends Controller
     {
         $product = Product::find($id)->delete();
         return redirect()->route('products.index');
+    }
+    public function productSize($id){
+        $product = Product::find($id);
+        return view('back-end.products.product-size.index', compact('product'));
+    }
+    public function productSizeEdit($id, $sizeId){
+        $product = DB::table('products')
+                            ->join('product_sizes', 'products.id','=', 'product_sizes.product_id')
+                            ->where('product_id', $id)
+                            ->where('size_id', $sizeId)
+                            ->get();
+        // dd($product);
+        return view('back-end.products.product-size.edit', compact('product'));
+    }
+    public function productSizeStore(Request $request, $id, $sizeId){
+        
+        $product = Product::with('size')->where('id', $id)->get();
+        foreach ($product as $product) {
+            foreach($product->size as $size){
+                if ($size->pivot->size_id == $sizeId) {
+                    $size->pivot->quantities = $request->quantities;
+                    // dd($size->pivot);
+                    $size->pivot->update(['quantities' =>$size->pivot->quantities]);
+                }
+            }
+        }
+        return view('back-end.products.product-size.index', compact('product'));
     }
 }
