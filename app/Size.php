@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Size extends Model
 {
-    public function productSize()
+    public function product()
     {
-        return $this->hasMany('App\ProductSize');
+        return $this->belongsToMany('App\Product', 'product_sizes', 'size_id', 'product_id');
     }
 }

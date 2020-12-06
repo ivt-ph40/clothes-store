@@ -34,9 +34,14 @@
             <td>{{$product->price}}</td>
 
             <td>
-                @foreach ($product->size as $size)
+                <div>
+                    @foreach ($product->size as $size)
                     {{$size->name .', '}}
-                @endforeach
+                    @endforeach
+                </div>
+                <div>
+                    <a href="{{route('product.size', $product->id)}}" class="btn btn-outline-secondary btn-sm">Quản lý số lượng</a>
+                </div>
             </td>
             
             <td class="d-flex">

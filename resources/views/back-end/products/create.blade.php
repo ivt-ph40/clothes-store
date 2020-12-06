@@ -13,7 +13,7 @@
             <div class="form-group">
                 @if (!$errors->has('name'))
                 <label for="">Tên SP <i style="color:red">*</i></label>
-                <input type="text" name="name" id="" class="form-control" placeholder="">
+                <input type="text" name="name" id="" class="form-control" placeholder="" value="{{old('name')}}">
                 @else
                 <label for="">Tên SP</label>
                 <input type="text" name="name" id="" class="form-control is-invalid" placeholder="" value="{{old('name')}}">
@@ -43,7 +43,7 @@
             <div class="form-group">
                 @if (!$errors->has('price'))
                 <label for="">Giá <i style="color:red">*</i></label>
-                <input type="text" name="price" id="" class="form-control" placeholder="">
+                <input type="text" name="price" id="" class="form-control" placeholder="" value="{{old('price')}}">
                 @else
                 <label for="">Giá <i style="color:red">*</i></label>
                 <input type="text" name="price" id="" class="form-control is-invalid" placeholder="" value="{{old('price')}}">
@@ -84,10 +84,10 @@
             <div class="form-group">
                 @if (!$errors->has('description'))
                 <label for="">Mô tả <i style="color:red">*</i></label>
-                <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+                <textarea class="form-control" name="description" id="description" rows="5">{{old('description')}}</textarea>
                 @else
                 <label for="">Mô tả <i style="color:red">*</i></label>
-                <textarea class="form-control is-invalid" name="description" id="description" rows="5"></textarea>
+                <textarea class="form-control is-invalid" name="description" id="description" rows="5">{{old('description')}}</textarea>
                 <p id="" class="invalid-feedback">{{ $errors->first('description') }}</p>
                 @endif
             </div>
@@ -97,10 +97,10 @@
             <div class="form-group">
                 @if (!$errors->has('detail'))
                 <label for="">Chi tiết Sản phẩm <i style="color:red">*</i></label>
-                <textarea class="form-control" name="detail" id="detail" rows="5"></textarea>
+                <textarea class="form-control" name="detail" id="detail" rows="5">{{old('detail')}}</textarea>
                 @else
                 <label for="">Chi tiết Sản phẩm <i style="color:red">*</i></label>
-                <textarea class="form-control is-invalid" name="detail" id="detail" rows="5"></textarea>
+                <textarea class="form-control is-invalid" name="detail" id="detail" rows="5">{{old('detail')}}</textarea>
                 <p id="" class="invalid-feedback">{{ $errors->first('detail') }}</p>
                 @endif
             </div>
