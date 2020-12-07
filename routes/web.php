@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
         Route::put('products/{id}/sizes/{sizeId}/edit', 'ProductController@productSizeStore')->name('product.size.store');
 
         Route::resource('orders', 'OrderController'); //Order
+        Route::put('order-status/{id}/edit', 'OrderController@orderStatusEdit')->name('order.status.edit');
 
     });
 });

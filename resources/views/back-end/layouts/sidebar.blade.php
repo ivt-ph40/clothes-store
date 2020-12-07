@@ -49,7 +49,7 @@
         </a>
         <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="">Quản lý đơn hàng</a>
+            <a class="collapse-item" href="{{ route('orders.index') }}">Quản lý đơn hàng</a>
           </div>
         </div>
       </li>
