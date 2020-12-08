@@ -4,7 +4,6 @@
 
 @section('content')
 <h1 class="h3 mb-3 text-gray-800">Quản lý Đơn hàng</h1>
-<a class="btn btn-success mb-3" href="{{ route('orders.create') }}">Thêm <i class="fas fa-plus"></i></a>
 @if(session()->has('error'))
     <p class="alert alert-danger">{{session()->get('error')}}</p>
 @endif

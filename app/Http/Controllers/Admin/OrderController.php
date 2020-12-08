@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrderStatus;
+use App\OrderDetail;
 use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
@@ -51,7 +52,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $orderDetails = OrderDetail::with('product', 'order')->get();
+        // dd($orderDetails);
+        return view('back-end.orders.show', compact('orderDetails'));
     }
 
     /**

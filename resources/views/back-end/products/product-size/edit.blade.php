@@ -1,6 +1,6 @@
 @extends('back-end.layouts.app')
 @section('tittle')
-    Số lượng sản phẩm
+    Đổi số lượng size
 @endsection
 
 @section('content')
