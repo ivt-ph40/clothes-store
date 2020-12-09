@@ -29,7 +29,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
 
         Route::resource('orders', 'OrderController'); //Order
         Route::put('order-status/{id}/edit', 'OrderController@orderStatusEdit')->name('order.status.edit');
+        Route::post('status-filter', 'OrderController@orderStatusFilter')->name('order.status.filter');
 
+        Route::resource('comments', 'CommentController'); //Comment
     });
 });
 

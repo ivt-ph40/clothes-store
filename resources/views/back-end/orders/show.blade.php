@@ -7,15 +7,12 @@
 @if(session()->has('error'))
     <p class="alert alert-danger">{{session()->get('error')}}</p>
 @endif
+
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Tên khách hàng</th>
-            <th scope="col">Địa chỉ</th>
-            <th scope="col">Số điện thoại</th>
-            <th scope="col">Email</th>
-            <th scope="col">Ghi chú</th>
             <th scope="col">Tên sản phẩm</th>
             <th scope="col">Số lượng</th>
             <th scope="col">Size</th>
@@ -27,16 +24,32 @@
         <tr>
             <th scope="row">{{$orderDetail->id}}</th>
             <td>{{$orderDetail->order->name}}</td>
-            <td>{{$orderDetail->order->address}}</td>
-            <td>{{$orderDetail->order->phone}}</td>
-            <td>{{$orderDetail->order->email}}</td>
-            <td>{{$orderDetail->order->message}}</td>
             <td>{{$orderDetail->product->name}}</td>
             <td>{{$orderDetail->quantities}}</td>
             <td>{{$orderDetail->size}}</td>
-            <td>{{$orderDetail->price}}</td>
+            <td id="price">{{$orderDetail->price}}</td>
         </tr>
         @endforeach
     </tbody>
+    <tfoot class="thead-light">
+        <tr>
+            <th colspan="5" class="text-center">Tổng</th>
+            <th>0</th>
+        </tr>
+    </tfoot>
+    
 </table>
+@endsection
+
+@section('script')
+    <script src="">
+        $('#price').blur(function () {
+            var sum = 0;
+            $('.price').each(function() {
+                sum += $(this).data("id");
+            });
+        });​​​​​​​​​
+        
+
+    </script>
 @endsection

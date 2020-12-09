@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Order;
-use App\OrderStatus;
-use App\OrderDetail;
+use App\Comment;
 use App\Http\Controllers\Controller;
 
-class OrderController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('orderStatus')->orderBy('id', 'desc')->get();
-        $orderStatus = OrderStatus::all();
-        // dd($orders);
-        return view('back-end.orders.index', compact('orders', 'orderStatus'));
+        $comments = Comment::with('product', 'user')->orderBy('id', 'desc')->paginate(10);
+        // dd($comments);
+        return view('back-end.comments.index', compact('comments'));
     }
 
     /**
@@ -52,9 +49,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $orderDetails = OrderDetail::with('product', 'order')->where('order_id', $id)->get();
-        // dd($orderDetails->toArray());
-        return view('back-end.orders.show', compact('orderDetails'));
+        //
     }
 
     /**
@@ -89,18 +84,5 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function orderStatusEdit(Request $request, $id){
-        $order = Order::find($id);
-        $order->order_status_id = $request->orderStatus;
-        $order->save();
-
-        return $this->index();
-    }
-    public function orderStatusFilter(Request $request){
-        $orders = Order::with('orderStatus')->where('order_status_id', $request->status_order_id)->orderBy('id', 'desc')->get();
-        $orderStatus = OrderStatus::all();
-        // dd($orders);
-        return view('back-end.orders.index', compact('orders', 'orderStatus'));
     }
 }

@@ -60,7 +60,7 @@
         </a>
         <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="">Quản lý comment</a>
+            <a class="collapse-item" href="{{ route('comments.index') }}">Quản lý comment</a>
           </div>
         </div>
       </li>

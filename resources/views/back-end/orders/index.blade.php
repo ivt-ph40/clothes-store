@@ -7,14 +7,43 @@
 @if(session()->has('error'))
     <p class="alert alert-danger">{{session()->get('error')}}</p>
 @endif
+
+<div class="row justify-content-start">
+    <div class="col-md-3">
+        <form action="{{route('order.status.filter')}}" method="post" class="d-flex">
+            @csrf
+            <div class="form-group d-flex">
+                <label for="" class="">Lọc theo trạng thái:</label>
+                <select class="form-control form-control-sm col-6" name="status_order_id" id="">
+                    @foreach ($orderStatus as $status)
+                    <option value="{{$status->id}}">{{$status->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-secondary btn-sm">Lọc</button> 
+            </div>
+        </form>
+    </div>
+    
+
+    <div class="">
+        <a href="{{route('orders.index')}}" class="btn btn-outline-danger btn-sm "><i class="fas fa-times"></i></a>
+    </div>
+    
+</div>
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Tên khách hàng</th>
-            <th scope="col">Trạng thái đơn hàng</th>
-            <th scope="col">Đổi trạng thái</th>
-            <th scope="col">Chi tiết đơn hàng</th>
+            <th style="width:2%">ID</th>
+            <th >Tên khách hàng</th>
+            <th>Địa chỉ</th>
+            <th >Số điện thoại</th>
+            <th >Email</th>
+            <th >Ghi chú</th>
+            <th >Trạng thái đơn hàng</th>
+            <th >Đổi trạng thái</th>
+            <th >Chi tiết đơn hàng</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +51,10 @@
         <tr>
             <th scope="row">{{$order->id}}</th>
             <td>{{$order->name}}</td>
+            <td>{{$order->address}}</td>
+            <td>{{$order->phone}}</td>
+            <td>{{$order->email}}</td>
+            <td>{{$order->message}}</td>
             @if ($order->orderStatus->id == 1)
                 <th class="text-danger">{{$order->orderStatus->name}}</th>
             @elseif ($order->orderStatus->id == 2 || $order->orderStatus->id == 3 || $order->orderStatus->id == 4)
