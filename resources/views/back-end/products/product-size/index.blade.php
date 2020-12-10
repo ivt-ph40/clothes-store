@@ -1,6 +1,6 @@
 @extends('back-end.layouts.app')
-@section('tittle')
-    Chi tiết sản phẩm
+@section('title')
+    Size
 @endsection
 
 @section('content')
