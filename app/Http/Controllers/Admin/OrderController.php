@@ -17,7 +17,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('orderStatus')->orderBy('id', 'desc')->get();
+        $orders = Order::with('orderStatus')->orderBy('order_status_id', 'asc')->get();
         $orderStatus = OrderStatus::all();
         // dd($orders);
         return view('back-end.orders.index', compact('orders', 'orderStatus'));
@@ -95,10 +95,10 @@ class OrderController extends Controller
         $order->order_status_id = $request->orderStatus;
         $order->save();
 
-        return $this->index();
+        return redirect()->route('orders.index');
     }
     public function orderStatusFilter(Request $request){
-        $orders = Order::with('orderStatus')->where('order_status_id', $request->status_order_id)->orderBy('id', 'desc')->get();
+        $orders = Order::with('orderStatus')->where('order_status_id', $request->status_order_id)->orderBy('order_status_id', 'asc')->get();
         $orderStatus = OrderStatus::all();
         // dd($orders);
         return view('back-end.orders.index', compact('orders', 'orderStatus'));

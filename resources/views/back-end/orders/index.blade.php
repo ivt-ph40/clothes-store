@@ -9,25 +9,23 @@
 @endif
 
 <div class="row justify-content-start">
-    <div class="col-md-3">
-        <form action="{{route('order.status.filter')}}" method="post" class="d-flex">
+    <div class="col-md-2">
+        <form action="{{route('order.status.filter')}}" method="get" class="d-flex">
             @csrf
-            <div class="form-group d-flex">
-                <label for="" class="">Lọc theo trạng thái:</label>
-                <select class="form-control form-control-sm col-6" name="status_order_id" id="">
+            <div class="form-group">
+                <label class="mb-0" for="" class="">Lọc theo trạng thái:</label>
+                <select class="form-control form-control-sm col-12" name="status_order_id" id="">
                     @foreach ($orderStatus as $status)
                     <option value="{{$status->id}}">{{$status->name}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <button type="submit" class="btn btn-secondary btn-sm">Lọc</button> 
             </div>
         </form>
     </div>
-    
-
-    <div class="">
+    <div class="mt-4">
         <a href="{{route('orders.index')}}" class="btn btn-outline-danger btn-sm "><i class="fas fa-times"></i></a>
     </div>
     
