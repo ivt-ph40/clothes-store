@@ -16,7 +16,7 @@ class Product extends Model
     }
     public function productImage()
     {
-        return $this->hasMany('App\ProductImage');
+        return $this->hasOne('App\ProductImage');
     }
     public function size()
     {
