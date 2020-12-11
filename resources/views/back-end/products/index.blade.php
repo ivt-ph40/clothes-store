@@ -14,6 +14,7 @@
             <th scope="col">ID</th>
             <th scope="col">Tên</th>
             <th scope="col">Ảnh</th>
+            <th scope="col">Danh mục</th>
             <th scope="col">Giá</th>
             <th scope="col">Size</th>
             <th scope="col">Sửa - Xoá</th>
@@ -23,17 +24,24 @@
         @foreach ($products as $product)
         <tr>
             <th scope="row">{{$product->id}}</th>
+
             <td><a href="{{route('products.show', $product->id)}}">{{$product->name}}</a></td>
-            <td>
-                @foreach ($product->productImage as $image)
-                <img src="{{asset($image->path)}}" alt="" width="80px">
-                @endforeach
-            </td>
+
+            <td><img src="{{asset($product->productImage->path)}}" alt="" width="80px"></td>
+
+            <td scope="row">{{$product->category->name}}</td>
+
             <td>{{$product->price}}</td>
+
             <td>
-                @foreach ($product->size as $size)
+                <div>
+                    @foreach ($product->size as $size)
                     {{$size->name .', '}}
-                @endforeach
+                    @endforeach
+                </div>
+                <div>
+                    <a href="{{route('product.size', $product->id)}}" class="btn btn-outline-secondary btn-sm">Quản lý số lượng</a>
+                </div>
             </td>
             
             <td class="d-flex">
@@ -57,7 +65,7 @@
                         <div class="modal-body">Bạn có muốn xoá Danh mục này?</div>
                         <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Trở lại</button>
-                        <form action="{{ route('categories.destroy', $product->id) }}" method="post">
+                        <form action="{{ route('products.destroy', $product->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button class="btn btn-primary" type="submit">Xoá</button>

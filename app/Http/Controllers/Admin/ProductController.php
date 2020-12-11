@@ -8,7 +8,9 @@ use App\Size;
 use App\Category;
 use App\ProductImage;
 use App\ProductSize;
+use DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -19,7 +21,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category', 'productImage', 'size')->paginate(10);
+        $products = Product::with(array('category', 'productImage', 'size' => function($query) {
+            $query->orderBy('size_id', 'ASC');
+        }))->orderBy('id', 'desc')->paginate(10);
         return view('back-end.products.index', compact('products'));
     }
 
@@ -41,7 +45,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $data = $request->all();
         if ($request->hasFile('images')){
@@ -52,12 +56,10 @@ class ProductController extends Controller
             $product_images['product_id'] = $productID;                    //Gán product id cho product_id ở bảng product_detail
             ProductImage::create($product_images);                         //Lưu data vào bảng product_detail
         }
-        $id = $request->only('size_id');
-        for ($i=1; $i <= count($id['size_id']); $i++) {                     //Tạo các record khi có Product ID
-            $product_sizes['product_id'] = $productID;
-            $product_sizes['size_id'] = $i;
-            ProductSize::create($product_sizes);
-        }
+        // Tạo record bảng Size 
+        $product = Product::find($productID);
+        $product->size()->attach($request->size_id);
+
         return redirect()->route('products.index');
     }
 
@@ -81,7 +83,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::where('parent_id', '!=', 0)->get();
+        $product = Product::with('size', 'productImage')->find($id);
+        $sizes = Size::all();
+        return view('back-end.products.edit', compact('product', 'categories', 'sizes'));
     }
 
     /**
@@ -91,9 +96,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $data = $request->only('name', 'price', 'category_id', 'description', 'detail');
+        Product::find($id)->update($data); 
+        if ($request->hasFile('images')){
+            $name = rand(1,9999) . '-' .$request->file('images')->getClientOriginalName();       //Thiết lập tên cho ảnh
+            $request->file('images')->move(public_path('/images'), $name);                       //Lưu ảnh với tên vừa tạo vào thư mục /img
+            ProductImage::where('product_id', $id)->update(['path' => "/images/$name"]);         //Lưu data vào bảng product_detail
+        }
+        // Update Size
+        $product = Product::find($id);
+        $product->size()->sync($request->size_id);
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -104,6 +120,34 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id)->delete();
+        return redirect()->route('products.index');
+    }
+    public function productSize($id){
+        $product = Product::find($id);
+        return view('back-end.products.product-size.index', compact('product'));
+    }
+    public function productSizeEdit($id, $sizeId){
+        $product = DB::table('products')
+                            ->join('product_sizes', 'products.id','=', 'product_sizes.product_id')
+                            ->where('product_id', $id)
+                            ->where('size_id', $sizeId)
+                            ->get();
+        // dd($product);
+        return view('back-end.products.product-size.edit', compact('product'));
+    }
+    public function productSizeStore(Request $request, $id, $sizeId){
+        
+        $product = Product::with('size')->where('id', $id)->get();
+        foreach ($product as $product) {
+            foreach($product->size as $size){
+                if ($size->pivot->size_id == $sizeId) {
+                    $size->pivot->quantities = $request->quantities;
+                    // dd($size->pivot);
+                    $size->pivot->update(['quantities' =>$size->pivot->quantities]);
+                }
+            }
+        }
+        return view('back-end.products.product-size.index', compact('product'));
     }
 }

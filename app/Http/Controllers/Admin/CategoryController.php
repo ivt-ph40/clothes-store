@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 
@@ -17,16 +18,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::with('children')->where('parent_id', 0)->get();
-        // dd($categories->toArray());
-        // dd($categories->toArray());
-        // foreach ($categories as $cate) {
-        //     if($cate['parent_id'] == 0 || $cate['parent_id'] == null){
-        //         $cate['parent_name'] = "";
-        //     } else {
-        //         $cate['parent_name'] = Category::find($cate['parent_id'])->name;
-        //     }
-        // };
-        // dd($categories);
         return view('back-end.categories.index', compact('categories'));
     }
 

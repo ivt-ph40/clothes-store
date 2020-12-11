@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -52,5 +52,10 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
         return redirect()->back()->with(['error' => 'Email or Password wrong!'])->withInput();
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

@@ -4,29 +4,30 @@
 @endsection
 
 @section('content')
-    <div class="">
-        <div>
-            <p style="font-weight: bold">
-                Tên sản phẩm: <h4>{{$product->name}}</h4>
-            </p>
+<h2>Chi tiết sản phẩm</h2>
+    <div class="container row mx-auto pt-5">
+        <div class="col-md-5">
+
+            <img src="{{asset($product->productImage->path)}}" alt="" width="100%">
         </div>
-        <div></div>
-        <ul style="list-style-type: none">
-            <li ></li>
-            @foreach ($product->productImage as $image)
-            <li><img src="{{asset($image->path)}}" alt="" width="300"></li>
-            @endforeach
-            <li>{{$product->price}}</li>
-            <li>
+        <div class="col-md-7">
+            <div><h3>{{$product->name}}</h3></div>
+
+            <div><h5>{{'Giá: ' . $product->price}}</h5></div>
+
+            <div>
+                <span>Size: </span>
                 @foreach ($product->size as $size)
-                {{$size->name . ','}}
+                <span>{{$size->name . ','}}</span>
                 @endforeach
-            </li>
-            
-            <li></li>
-           
-            <li>{!!$product->description!!}</li>
-            <li>{!!$product->detail!!}</li>
-        </ul>
+            </div>
+
+            <div>{!!$product->description!!}</div>
+        </div>
+
+        <div class="mt-5">
+            <h4>Thông tin chi tiết</h4>
+            {!!$product->detail!!}
+        </div>
     </div>
 @endsection

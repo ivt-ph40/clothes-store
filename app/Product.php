@@ -16,18 +16,17 @@ class Product extends Model
     }
     public function productImage()
     {
-        return $this->hasOne('App\ProductImage');
+        return $this->hasOne('App\ProductImage', 'product_id');
     }
     public function size()
     {
-        return $this->belongsToMany('App\Size', 'product_sizes', 'product_id', 'size_id');
-    }
-    public function productSize()
-    {
-        return $this->hasMany('App\ProductSize');
+        return $this->belongsToMany('App\Size', 'product_sizes', 'product_id', 'size_id')->withPivot('quantities');
     }
     public function comment()
     {
         return $this->hasMany('App\Comment');
+    }
+    public function orderDetail(){
+        return $this->hasMany('App\OrderDetail');
     }
 }
