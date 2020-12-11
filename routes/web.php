@@ -19,6 +19,9 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::group(['middleware' => 'is.admin'], function(){
+        Route::post('search', 'DashboardController@search')->name('search');
+        Route::post('autocomplete-ajax', 'DashboardController@autocompleteAjax')->name('autocomplete-ajax');
+
         Route::get('/', 'DashboardController@index')->name('dashboard'); //DashBoard
         Route::resource('categories', 'CategoryController'); //Category
         Route::resource('products', 'ProductController'); //Product

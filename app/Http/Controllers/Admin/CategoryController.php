@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Category;
 use App\User;
+use App\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 
@@ -92,12 +93,17 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-
         $cateDel = Category::find($id);
         $allCate = Category::all();
+        $cateIdProduct = Product::all();
         foreach($allCate as $value){
             if ($value->parent_id == $cateDel->id){
                 return redirect()->back()->with(['error' => 'Danh mục này đang có Danh mục con, không thể xoá']);
+            }
+            foreach($cateIdProduct as $cateId){
+                if ($cateDel->id == $cateId->category_id) {
+                    return redirect()->back()->with(['error' => 'Danh mục này đang có Sản phẩm, không thể xoá']);
+                }
             }
         }
         Category::find($id)->delete();
