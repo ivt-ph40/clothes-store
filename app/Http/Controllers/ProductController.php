@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use App\Category;
+
 
 class ProductController extends Controller
 {
@@ -14,7 +16,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::where('parent_id' , 0)->get();
+        $cateChild = Category::where('parent_id', '!=', 0)->get();
+        $products = Product::latest()->get();
+        // dd($products);
+        return view('front-end.product', compact('categories', 'cateChild', 'products'));
     }
 
     /**
@@ -81,5 +87,12 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+    public function showProductWithCate($id){
+        $categories = Category::where('parent_id' , 0)->get();
+        $cateChild = Category::where('parent_id', '!=', 0)->get();
+        $products = Product::with('category')->where('category_id', $id)->get();
+        // dd($products);
+        return view('front-end.shop', compact('categories', 'cateChild', 'products'));
     }
 }

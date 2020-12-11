@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -24,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('front-end/login');
     }
 
     /**
@@ -41,22 +40,21 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $categories = Category::where('parent_id', $id)->get();
-        dd($categories);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +63,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +74,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         //
     }
