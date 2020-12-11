@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-})->name('home');
+Route::get('/', 'HomeController@index')->name('trang-chu');
+
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('form-login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
@@ -38,5 +38,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
     });
 });
 
+Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard'); //DashBoard
+Route::resource('categories', 'Admin\CategoryController'); //Category
+Route::resource('products', 'Admin\ProductController'); //Product
+
+Route::get('/san-pham', 'ProductController@index')->name('san-pham');
+Route::get('/san-pham/{id}/products', 'ProductController@showProductWithCate')->name('xem-san-pham');
+Route::get('/dang-nhap', 'LoginController@create')->name('dang-nhap');
+Route::get('/gioi-thieu', 'PageController@about')->name('gioi-thieu');
 
 Route::get('/home', 'HomeController@index')->name('home');
