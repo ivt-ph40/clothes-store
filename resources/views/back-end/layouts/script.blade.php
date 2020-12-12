@@ -38,7 +38,7 @@ $('#search').keyup(function(){
     });
   }
 });
-$(document).on('click', 'li', function(){
+$(document).on('click', '.search-product-list', function(){
   $('#search').val($(this).text());
   $('#search-ajax').fadeOut();
 });

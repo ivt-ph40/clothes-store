@@ -29,7 +29,7 @@
 
             <td><img src="{{asset($product->productImage->path)}}" alt="" width="80px"></td>
 
-            {{-- <td scope="row">{{$search_product->category->name}}</td> --}}
+            <td scope="row">{{$product->category->name}}</td>
 
             <td>{{$product->price}}</td>
 

@@ -102,7 +102,7 @@ class DashboardController extends Controller
         //                 ->where('products.name', 'like', '%'.$search.'%')
         //                 ->orWhere('categories.name', 'like', '%'.$search.'%')
         //                 ->paginate(10);
-        $result = Product::where('name', 'like', '%'.$search.'%')->paginate(10);
+        $result = Product::with('category')->where('name', 'like', '%'.$search.'%')->paginate(10);
         // dd($result);
         return view('back-end.search', compact('result', 'search'));
     }
@@ -114,7 +114,7 @@ class DashboardController extends Controller
             // dd($products);
             $output = '<ul class="dropdown-menu" style="display:block; position:absolute; width:360px">';
             foreach($products as $product){
-                $output .= '<li>'.$product->name.'</li>';
+                $output .= '<li class="search-product-list">'.$product->name.'</li>';
             }
             $output .= '</ul>';
             echo $output;

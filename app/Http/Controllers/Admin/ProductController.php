@@ -9,6 +9,7 @@ use App\Category;
 use App\ProductImage;
 use App\ProductSize;
 use DB;
+use App\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 
@@ -120,13 +121,26 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+        $orders = Order::all();
+        $productDel = Product::with('orderDetail')->find($id);
+        
+        foreach($orders as $order){
+            foreach($productDel->orderDetail as $orderDetail){
+                if ($orderDetail->order_id == $order->id) {
+                    // dd($productDel);
+                    return redirect()->back()->with(['error' => 'Sản phẩm này đang có đơn đặt hàng, không thể xoá']);
+                }
+            }
+        }
         $product = Product::find($id)->delete();
         return redirect()->route('products.index');
     }
+
     public function productSize($id){
         $product = Product::find($id);
         return view('back-end.products.product-size.index', compact('product'));
     }
+
     public function productSizeEdit($id, $sizeId){
         $product = DB::table('products')
                             ->join('product_sizes', 'products.id','=', 'product_sizes.product_id')
@@ -136,6 +150,7 @@ class ProductController extends Controller
         // dd($product);
         return view('back-end.products.product-size.edit', compact('product'));
     }
+
     public function productSizeStore(Request $request, $id, $sizeId){
         
         $product = Product::with('size')->where('id', $id)->get();

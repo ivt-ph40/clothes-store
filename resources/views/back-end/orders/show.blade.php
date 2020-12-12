@@ -27,7 +27,7 @@
             <td>{{$orderDetail->product->name}}</td>
             <td>{{$orderDetail->quantities}}</td>
             <td>{{$orderDetail->size}}</td>
-            <td id="price">{{$orderDetail->price}}</td>
+            <td id="price">{{ number_format($orderDetail->price ?? 0,0,',','.') }} VNĐ</td>
         </tr>
         @endforeach
     </tbody>

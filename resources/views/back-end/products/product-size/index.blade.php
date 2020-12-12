@@ -27,6 +27,7 @@
         @endforeach
     </tbody>
 </table>
+<a href="{{route('products.index')}}" class="btn btn-info"><i class="fas fa-long-arrow-alt-left"></i> Tất cả sản phẩm</a>
 
 {{-- <div id="show-form">
 

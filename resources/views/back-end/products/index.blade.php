@@ -31,7 +31,7 @@
 
             <td scope="row">{{$product->category->name}}</td>
 
-            <td>{{$product->price}}</td>
+            <td>{{ number_format($product->price ?? 0,0,',','.') }} VNĐ</td>
 
             <td>
                 <div>
