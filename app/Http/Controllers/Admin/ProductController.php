@@ -133,7 +133,7 @@ class ProductController extends Controller
             }
         }
         $product = Product::find($id)->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('status', 'Xoá thành công');
     }
 
     public function productSize($id){

@@ -107,6 +107,6 @@ class CategoryController extends Controller
             }
         }
         Category::find($id)->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('status', 'Xoá thành công');
     }
 }

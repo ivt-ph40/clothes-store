@@ -7,6 +7,8 @@
 <a class="btn btn-success mb-3" href="{{ route('categories.create') }}">Thêm <i class="fas fa-plus"></i></a>
 @if(session()->has('error'))
     <p class="alert alert-danger">{{session()->get('error')}}</p>
+@elseif(session()->has('status'))
+    <p class="alert alert-success">{{ session('status') }}</p>
 @endif
 <table class="table table-striped">
     <thead class="thead-dark">

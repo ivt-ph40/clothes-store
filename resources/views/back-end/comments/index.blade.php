@@ -6,6 +6,8 @@
 <h1 class="h3 mb-3 text-gray-800">Quản lý Đơn hàng</h1>
 @if(session()->has('error'))
     <p class="alert alert-danger">{{session()->get('error')}}</p>
+@elseif(session()->has('status'))
+    <p class="alert alert-success">{{ session('status') }}</p>
 @endif
 
 <table class="table table-striped">
