@@ -55,7 +55,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        
+        $category = Category::find($id); 
+        $products = Product::with('category', 'productImage')->where('category_id', $id)->paginate(10);
+        return view('back-end.categories.show', compact('products', 'category'));
     }
 
     /**

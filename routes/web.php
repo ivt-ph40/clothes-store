@@ -32,19 +32,19 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
 
         Route::resource('orders', 'OrderController'); //Order
         Route::put('order-status/{id}/edit', 'OrderController@orderStatusEdit')->name('order.status.edit');
-        Route::get('status-filter/', 'OrderController@orderStatusFilter')->name('order.status.filter');
+        Route::get('status-filter', 'OrderController@orderStatusFilter')->name('order.status.filter');
+        Route::get('status/dang-cho-xac-nhan', 'OrderController@orderStatus1')->name('order.status.1');
+        Route::get('show-orders-cancelled', 'OrderController@showOrderCancel')->name('show.order.cancelled');
 
         Route::resource('comments', 'CommentController'); //Comment
+        Route::resource('users', 'UserController'); //User
     });
 });
 
-Route::get('/dashboard', 'Admin\DashboardController@index')->name('dashboard'); //DashBoard
-Route::resource('categories', 'Admin\CategoryController'); //Category
-Route::resource('products', 'Admin\ProductController'); //Product
 
 Route::get('/san-pham', 'ProductController@index')->name('san-pham');
 Route::get('/san-pham/{id}/products', 'ProductController@showProductWithCate')->name('xem-san-pham');
 Route::get('/dang-nhap', 'LoginController@create')->name('dang-nhap');
 Route::get('/gioi-thieu', 'PageController@about')->name('gioi-thieu');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

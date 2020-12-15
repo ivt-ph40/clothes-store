@@ -5,7 +5,7 @@
 
 @section('content')
 <h2>Sản phẩm: {{$product->name}}</h2>
-<table class="table table-striped col-4">
+<table class="table table-striped col-4  shadow bg-white">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Size</th>

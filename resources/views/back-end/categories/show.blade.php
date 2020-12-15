@@ -3,20 +3,19 @@
 @section('title')Danh sách sản phẩm @endsection
 
 @section('content')
-<h1 class="h3 mb-3 text-gray-800">Danh sách sản phẩm</h1>
+<h1 class="h3 mb-3 text-gray-800">Danh sách sản phẩm với danh mục {!! '<b>'.$category->name.'</b>' !!}</h1>
 <a class="btn btn-success mb-3" href="{{ route('products.create') }}">Thêm <i class="fas fa-plus"></i></a>
 @if(session()->has('error'))
     <p class="alert alert-danger">{{session()->get('error')}}</p>
 @elseif(session()->has('status'))
     <p class="alert alert-success">{{ session('status') }}</p>
 @endif
-<table class="table table-striped shadow bg-white" id="myTable">
+<table class="table table-striped shadow bg-white">
     <thead class="thead-dark">
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Tên</th>
             <th scope="col">Ảnh</th>
-            <th scope="col">Danh mục</th>
             <th scope="col">Giá</th>
             <th scope="col">Size</th>
             <th scope="col">Sửa - Xoá</th>
@@ -30,8 +29,6 @@
             <td><a href="{{route('products.show', $product->id)}}" class="text-secondary" style="text-decoration: none">{{$product->name}}</a></td>
 
             <td><img src="{{asset($product->productImage->path)}}" alt="" width="80px"></td>
-
-            <td scope="row"><a href="{{route('categories.show',$product->category->id)}}" class="btn btn-outline-success" style="text-decoration: none">{{$product->category->name}}</a></td>
 
             <td>{{ number_format($product->price ?? 0,0,',','.') }} VNĐ</td>
 
@@ -85,11 +82,3 @@
 {{ $products->links() }}
 
 @endsection
-
-{{-- @section('script')
-    <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable();
-        });
-    </script>
-@endsection --}}

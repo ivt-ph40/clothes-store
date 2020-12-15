@@ -96,22 +96,13 @@ class DashboardController extends Controller
     }
     public function search(Request $request){
         $search = $request->search;
-        // $result = DB::table('products')
-        //                 ->join('categories', 'products.category_id', '=', 'categories.id')
-        //                 ->select('products.*', 'categories.*', 'products.name as product_name', 'categories.name as category_name')
-        //                 ->where('products.name', 'like', '%'.$search.'%')
-        //                 ->orWhere('categories.name', 'like', '%'.$search.'%')
-        //                 ->paginate(10);
         $result = Product::with('category')->where('name', 'like', '%'.$search.'%')->paginate(10);
-        // dd($result);
         return view('back-end.search', compact('result', 'search'));
     }
     public function autocompleteAjax(Request $request){
         $data = $request->get('query');
-        // dd($request->query);
         if($data){
-            $products = Product::where('name', 'like', '%'.$data.'%')->get();
-            // dd($products);
+            $products = Product::with('productImage')->where('name', 'like', '%'.$data.'%')->get();
             $output = '<ul class="dropdown-menu" style="display:block; position:absolute; width:360px">';
             foreach($products as $product){
                 $output .= '<li class="search-product-list">'.$product->name.'</li>';

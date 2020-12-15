@@ -11,7 +11,7 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Danh mục cha</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1"><a class="text-success " href="{{route('categories.index')}}" style="text-decoration: none">Danh mục cha</a> </div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">{{$cateCount}}</div>
               </div>
               <div class="col mr-2">
@@ -32,7 +32,7 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Sản phẩm</div>
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><a class="text-primary " href="{{route('products.index')}}" style="text-decoration: none">Sản phẩm</a></div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">{{$product}}</div>
               </div>
               <div class="col-auto">
@@ -49,7 +49,7 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">User</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1"><a class="text-warning " href="{{route('users.index')}}" style="text-decoration: none">User</a></div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">{{$user}}</div>
               </div>
               <div class="col-auto">
@@ -67,11 +67,11 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Tổng số đơn hàng</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1"><a class="text-danger " href="{{route('orders.index')}}" style="text-decoration: none">Tổng số đơn hàng</a></div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">{{$order}}</div>
               </div>
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Đơn hàng chờ xác nhận</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1"><a class="text-danger " href="{{route('order.status.1')}}" style="text-decoration: none">Đơn hàng chờ xác nhận</a></div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{$orderWaitConfirm}}</div>
               </div>
               <div class="col-auto">

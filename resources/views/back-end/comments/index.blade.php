@@ -10,7 +10,7 @@
     <p class="alert alert-success">{{ session('status') }}</p>
 @endif
 
-<table class="table table-striped">
+<table class="table table-striped shadow bg-white">
     <thead class="thead-dark">
         <tr>
             <th style="width:2%">ID</th>

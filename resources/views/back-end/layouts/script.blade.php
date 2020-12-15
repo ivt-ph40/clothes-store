@@ -20,7 +20,10 @@
 
 <!-- include summernote js -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script> --}}
+
+<!-- include datatables js -->
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
 <script>
 $('#search').keyup(function(){
   var query =$(this).val();
