@@ -1,10 +1,10 @@
 @extends('back-end.layouts.app')
 @section('title')
-    Thêm sản phẩm
+    Sửa sản phẩm
 @endsection
 
 @section('content')
-    <h1 class="h3 mb-3 text-gray-800">Thêm sản phẩm</h1>
+    <h1 class="h3 mb-3 text-gray-800">Sửa sản phẩm</h1>
 <form action="{{route('products.update', $product->id)}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('put')

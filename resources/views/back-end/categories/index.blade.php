@@ -10,7 +10,7 @@
 @elseif(session()->has('status'))
     <p class="alert alert-success">{{ session('status') }}</p>
 @endif
-<table class="table table-striped shadow bg-white">
+<table class="table shadow bg-white">
     <thead class="thead-dark">
         <tr>
             <th style="width: 15%">ID</th>

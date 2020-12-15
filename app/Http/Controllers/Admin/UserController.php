@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
-use App\RoleUser;
+use App\Order;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserCreateRequest;
 
 class UserController extends Controller
 {
@@ -39,13 +40,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
         $data = $request->only('name', 'email', 'password');
         $data['password'] = bcrypt($request->password);
-        $role_user['user_id'] = User::create($data)->id; //create User Table
-        $role_user['role_id'] = $request->role_id;
-        RoleUser::create($role_user); //create UserRole Table
+        $user_id = User::create($data)->id; //create User Table
+
+        $user = User::find($user_id);
+        $user->role()->attach($request->role_id);//create record RoleUser Table
         
         return redirect()->route('users.index');
     }
@@ -92,6 +94,16 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $orders = Order::all();
+        foreach($orders as $order){
+            if ($id == $order->user_id) {
+                return redirect()->back()->with(['error' => 'Người dùng này đang có đơn đặt hàng, không thể xoá']);
+            }
+        }
+        if(\Auth::user()->id == $id){
+            return redirect()->back()->with(['error' => 'Không thể xoá']);
+        }
+        User::find($id)->delete();
+        return redirect()->route('users.index')->with('status', 'Xoá thành công');
     }
 }
