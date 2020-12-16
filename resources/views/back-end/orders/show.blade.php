@@ -27,14 +27,14 @@
             <td>{{$orderDetail->product->name}}</td>
             <td>{{$orderDetail->quantities}}</td>
             <td>{{$orderDetail->size}}</td>
-            <td id="price">{{$orderDetail->price}}</td>
+            <td id="price">{{ number_format($orderDetail->price ?? 0,0,',','.') }} VNĐ</td>
         </tr>
         @endforeach
     </tbody>
     <tfoot class="thead-light">
         <tr>
             <th colspan="5" class="text-center">Tổng</th>
-            <th>0</th>
+            <th>{{ number_format($total ?? 0,0,',','.') }} VNĐ</th>
         </tr>
     </tfoot>
     

@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Category;
-use App\Product;
 use App\User;
+use App\Role;
 use App\Order;
-use DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserCreateRequest;
 
-class DashboardController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,14 +18,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $cateCount = Category::where('parent_id', 0)->count();
-        $cateChildCount = Category::where('parent_id','!=', 0)->count();
-        $product = Product::count();
-        $user = User::count();
-        $order = Order::count();
-        $orderWaitConfirm = Order::where('order_status_id', 1)->count();
-        // dd($cateChildCount);
-        return view('back-end.dashboard.index', compact('cateCount', 'cateChildCount', 'product', 'user', 'order', 'orderWaitConfirm'));
+        $users = User::all();
+        // dd(\Auth::user()->id);
+        return view('back-end.users.index', compact('users'));
     }
 
     /**
@@ -36,7 +30,8 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('back-end.users.create', compact('roles'));
     }
 
     /**
@@ -45,9 +40,16 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
-        //
+        $data = $request->only('name', 'email', 'password');
+        $data['password'] = bcrypt($request->password);
+        $user_id = User::create($data)->id; //create User Table
+
+        $user = User::find($user_id);
+        $user->role()->attach($request->role_id);//create record RoleUser Table
+        
+        return redirect()->route('users.index');
     }
 
     /**
@@ -92,23 +94,16 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-    public function search(Request $request){
-        $search = $request->search;
-        $result = Product::with('category')->where('name', 'like', '%'.$search.'%')->paginate(10);
-        return view('back-end.search', compact('result', 'search'));
-    }
-    public function autocompleteAjax(Request $request){
-        $data = $request->get('query');
-        if($data){
-            $products = Product::with('productImage')->where('name', 'like', '%'.$data.'%')->get();
-            $output = '<ul class="dropdown-menu" style="display:block; position:absolute; width:360px">';
-            foreach($products as $product){
-                $output .= '<li class="search-product-list">'.$product->name.'</li>';
+        $orders = Order::all();
+        foreach($orders as $order){
+            if ($id == $order->user_id) {
+                return redirect()->back()->with(['error' => 'Người dùng này đang có đơn đặt hàng, không thể xoá']);
             }
-            $output .= '</ul>';
-            echo $output;
         }
+        if(\Auth::user()->id == $id){
+            return redirect()->back()->with(['error' => 'Không thể xoá']);
+        }
+        User::find($id)->delete();
+        return redirect()->route('users.index')->with('status', 'Xoá thành công');
     }
 }

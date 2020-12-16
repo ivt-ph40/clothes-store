@@ -5,7 +5,7 @@
 
 @section('content')
 <h2>Sản phẩm: {{$product->name}}</h2>
-<table class="table table-striped col-4">
+<table class="table table-striped col-4  shadow bg-white">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Size</th>
@@ -27,6 +27,7 @@
         @endforeach
     </tbody>
 </table>
+<a href="{{route('products.index')}}" class="btn btn-info"><i class="fas fa-long-arrow-alt-left"></i> Tất cả sản phẩm</a>
 
 {{-- <div id="show-form">
 

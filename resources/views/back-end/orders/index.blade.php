@@ -5,32 +5,43 @@
 @section('content')
 <h1 class="h3 mb-3 text-gray-800">Quản lý Đơn hàng</h1>
 @if(session()->has('error'))
-    <p class="alert alert-danger">{{session()->get('error')}}</p>
+    <p class="alert alert-danger">{{session('error')}}</p>
+@elseif(session()->has('status'))
+    <p class="alert alert-success">{{ session('status') }}</p>
 @endif
 
-<div class="row justify-content-start">
-    <div class="col-md-2">
+<div class="row container-fluid">
+    <div class="" >
         <form action="{{route('order.status.filter')}}" method="get" class="d-flex">
             @csrf
-            <div class="form-group">
+            <div class="form-group mr-1">
                 <label class="mb-0" for="" class="">Lọc theo trạng thái:</label>
-                <select class="form-control form-control-sm col-12" name="status_order_id" id="">
+                <select class="form-control form-control-sm" name="status_order_id" id="">
                     @foreach ($orderStatus as $status)
                     <option value="{{$status->id}}">{{$status->name}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="form-group mt-4">
+            <div class="form-group mt-4 mr-1">
                 <button type="submit" class="btn btn-secondary btn-sm">Lọc</button> 
             </div>
         </form>
     </div>
+    
     <div class="mt-4">
-        <a href="{{route('orders.index')}}" class="btn btn-outline-danger btn-sm "><i class="fas fa-times"></i></a>
+        <div class=" pr-4 mr-4 border-right">
+            <a href="{{route('orders.index')}}" class="btn btn-outline-danger btn-sm "><i class="fas fa-times"></i></a>
+        </div>
+        
+    </div>
+    <div class="">
+        <div class="form-group mt-4">
+            <a href="{{route('show.order.cancelled')}}" class="btn btn-info btn-sm">Xem đơn hàng đã huỷ</a>
+        </div>
     </div>
     
 </div>
-<table class="table table-striped">
+<table class="table table-striped shadow bg-white">
     <thead class="thead-dark">
         <tr>
             <th style="width:2%">ID</th>
@@ -55,10 +66,16 @@
             <td>{{$order->message}}</td>
             @if ($order->orderStatus->id == 1)
                 <th class="text-danger">{{$order->orderStatus->name}}</th>
-            @elseif ($order->orderStatus->id == 2 || $order->orderStatus->id == 3 || $order->orderStatus->id == 4)
+            @elseif ($order->orderStatus->id == 2)
+                <th class="text-warning">{{$order->orderStatus->name}}</th>
+            @elseif ($order->orderStatus->id == 3)
+                <th class="text-primary">{{$order->orderStatus->name}}</th>
+            @elseif ($order->orderStatus->id == 4)
                 <th class="text-info">{{$order->orderStatus->name}}</th>
-            @else ($order->orderStatus->id == 5)
+            @elseif ($order->orderStatus->id == 5)
                 <th class="text-success">{{$order->orderStatus->name}}</th>
+            @elseif ($order->orderStatus->id == 6)
+                <th class="text-muted">{{$order->orderStatus->name}}</th>
             @endif
             <td>
                 <form action="{{ route('order.status.edit',$order->id ) }}" method="post" class="d-flex">

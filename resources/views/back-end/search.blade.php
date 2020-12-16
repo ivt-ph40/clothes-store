@@ -1,16 +1,14 @@
 @extends('back-end.layouts.app')
 
-@section('title')Danh sách sản phẩm @endsection
+@section('title')Tìm kiếm sản phẩm @endsection
 
 @section('content')
-<h1 class="h3 mb-3 text-gray-800">Danh sách sản phẩm</h1>
-<a class="btn btn-success mb-3" href="{{ route('products.create') }}">Thêm <i class="fas fa-plus"></i></a>
+<h1 class="h3 mb-3 text-gray-800">Tìm kiếm sản phẩm có tên: {!! '<b>'.$search.'</b>' !!} </h1>
+{{-- <a class="btn btn-success mb-3" href="{{ route('products.create') }}">Thêm <i class="fas fa-plus"></i></a> --}}
 @if(session()->has('error'))
     <p class="alert alert-danger">{{session()->get('error')}}</p>
-@elseif(session()->has('status'))
-    <p class="alert alert-success">{{ session('status') }}</p>
 @endif
-<table class="table table-striped shadow bg-white" id="myTable">
+<table class="table table-striped">
     <thead class="thead-dark">
         <tr>
             <th scope="col">ID</th>
@@ -23,17 +21,17 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($products as $product)
+        @foreach ($result as $product)
         <tr>
             <th scope="row">{{$product->id}}</th>
 
-            <td><a href="{{route('products.show', $product->id)}}" class="text-secondary" style="text-decoration: none">{{$product->name}}</a></td>
+            <td><a href="{{route('products.show', $product->id)}}">{{$product->name}}</a></td>
 
             <td><img src="{{asset($product->productImage->path)}}" alt="" width="80px"></td>
 
-            <td scope="row"><a href="{{route('categories.show',$product->category->id)}}" class="btn btn-outline-success" style="text-decoration: none">{{$product->category->name}}</a></td>
+            <td scope="row">{{$product->category->name}}</td>
 
-            <td>{{ number_format($product->price ?? 0,0,',','.') }} VNĐ</td>
+            <td>{{$product->price}}</td>
 
             <td>
                 <div>
@@ -82,14 +80,7 @@
     </tbody>
 </table>
 
-{{ $products->links() }}
+{{ $result->links() }}
 
 @endsection
 
-{{-- @section('script')
-    <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable();
-        });
-    </script>
-@endsection --}}
