@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::with('orderStatus')->where('order_status_id', '<=', 5)->orderBy('order_status_id', 'asc')->get();
-        $orderStatus = OrderStatus::where('id', '<=', 5)->get();
+        $orderStatus = OrderStatus::all();
         // dd($orders);
         return view('back-end.orders.index', compact('orders', 'orderStatus'));
     }
@@ -53,8 +53,13 @@ class OrderController extends Controller
     public function show($id)
     {
         $orderDetails = OrderDetail::with('product', 'order')->where('order_id', $id)->get();
-        // dd($orderDetails->toArray());
-        return view('back-end.orders.show', compact('orderDetails'));
+        // dd($orderDetails);
+        $total =0;
+        foreach($orderDetails as $orderDetail){
+            $total += $orderDetail->price; 
+        }
+        
+        return view('back-end.orders.show', compact('orderDetails', 'total'));
     }
 
     /**

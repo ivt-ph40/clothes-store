@@ -12,6 +12,7 @@ use DB;
 use App\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductEditRequest;
 
 class ProductController extends Controller
 {
@@ -97,7 +98,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, $id)
+    public function update(ProductEditRequest $request, $id)
     {
         $data = $request->only('name', 'price', 'category_id', 'description', 'detail');
         Product::find($id)->update($data); 
@@ -110,7 +111,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->size()->sync($request->size_id);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('status', 'Sửa thành công');
     }
 
     /**

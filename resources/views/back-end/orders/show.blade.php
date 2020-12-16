@@ -34,7 +34,7 @@
     <tfoot class="thead-light">
         <tr>
             <th colspan="5" class="text-center">Tổng</th>
-            <th>0</th>
+            <th>{{ number_format($total ?? 0,0,',','.') }} VNĐ</th>
         </tr>
     </tfoot>
     

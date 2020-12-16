@@ -71,8 +71,8 @@
         </a>
         <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="">Quản lý User</a>
-            <a class="collapse-item" href="">Tạo User mới</a>
+            <a class="collapse-item" href="{{ route('users.index') }}">Quản lý User</a>
+            <a class="collapse-item" href="{{ route('users.create') }}">Tạo User mới</a>
           </div>
         </div>
       </li>
