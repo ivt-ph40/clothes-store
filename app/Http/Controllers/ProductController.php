@@ -92,7 +92,33 @@ class ProductController extends Controller
         $categories = Category::where('parent_id' , 0)->get();
         $cateChild = Category::where('parent_id', '!=', 0)->get();
         $products = Product::with('category')->where('category_id', $id)->get();
+        $catename = Category::find($id);
+        $enabled = Product::with('category')->where('category_id', $id)->latest()->take(6)->get();
+        $productmin = Product::where('price' , '<', '200000')->take(5)->get();
         // dd($products);
-        return view('front-end.shop', compact('categories', 'cateChild', 'products'));
+        return view('front-end.shop', compact('categories', 'cateChild', 'products',  'catename', 'enabled', 'productmin'));
+    }
+
+    public function productDetail($id)
+    {
+        $categories = Category::where('parent_id' , 0)->get();
+        $cateChild = Category::where('parent_id', '!=', 0)->get();
+        $productDetail = Product::with(array('productImage', 'size', 'comment' => function($query){
+            $query->latest()->take(3)->get();
+        }))->find($id);
+        return view('front-end.detail', compact('productDetail', 'categories', 'cateChild'));
+    }
+
+    public function search(Request $request)
+    {
+        $data = $request->search;
+        $search_products = Product::where('name', 'like', '%'.$data.'%')->get();
+        $categories = Category::where('parent_id' , 0)->get();
+        $cateChild = Category::where('parent_id', '!=', 0)->get();
+        // $products = Product::with('category')->where('category_id', $id)->get();
+        // $catename = Category::find($id);
+        // $enabled = Product::with('category')->where('category_id', $id)->latest()->take(6)->get();
+        // $productmin = Product::where('price' , '<', '200000')->take(5)->get();
+        return view('front-end.search', compact('data', 'categories', 'cateChild', 'search_products'));
     }
 }

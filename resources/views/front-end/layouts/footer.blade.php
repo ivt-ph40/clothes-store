@@ -3,11 +3,10 @@
 			<div class="row footer-top-w3layouts">
 				<div class="col-lg-3 footer-grid-w3ls">
 					<div class="footer-title">
-						<h3>About Us</h3>
+						<h3>Giới thiệu</h3>
 					</div>
 					<div class="footer-text">
-						<p>Curabitur non nulla sit amet nislinit tempus convallis quis ac lectus. lac inia eget consectetur sed, convallis at
-							tellus. Nulla porttitor accumsana tincidunt.</p>
+						<p>Chúng tôi luôn mang những mặt hàng tốt nhất cho quý khách. Yên tâm về giá cả, yên tâm về chất lượng là mục tiêu hàng đầu của chúng tôi.</p>
 						<ul class="footer-social text-left mt-lg-4 mt-3">
 
 							<li class="mx-2">
@@ -45,16 +44,16 @@
 				</div>
 				<div class="col-lg-3 footer-grid-w3ls">
 					<div class="footer-title">
-						<h3>Get in touch</h3>
+						<h3>Liên hệ</h3>
 					</div>
 					<div class="contact-info">
-						<h4>Location :</h4>
-						<p>0926k 4th block building, king Avenue, New York City.</p>
+						<h4>Địa chỉ: </h4>
+						<p>92 Quang Trung, Hải Châu, Đà Nẵng</p>
 						<div class="phone">
 							<h4>Contact :</h4>
-							<p>Phone : +121 098 8907 9987</p>
+							<p>Phone :+84 123456789</p>
 							<p>Email :
-								<a href="mailto:info@example.com">info@example.com</a>
+								<a href="mailto:banhstore@gmail.com">banhstore@gmail.com</a>
 							</p>
 						</div>
 					</div>
@@ -65,30 +64,27 @@
 					</div>
 					<ul class="links">
 						<li>
-							<a href="index.html">Home</a>
+							<a href="{{route('trang-chu')}}">Trang chủ</a>
 						</li>
 						<li>
-							<a href="about.html">About</a>
+							<a href="{{route('gioi-thieu')}}">Giới thiệu</a>
 						</li>
 						<li>
-							<a href="404.html">Error</a>
+							<a href="{{route('san-pham')}}">Shop</a>
 						</li>
 						<li>
-							<a href="shop.html">Shop</a>
-						</li>
-						<li>
-							<a href="contact.html">Contact Us</a>
+							<a href="{{route('contact')}}">Contact Us</a>
 						</li>
 					</ul>
 				</div>
 				<div class="col-lg-3 footer-grid-w3ls">
 					<div class="footer-title">
-						<h3>Sign up for your offers</h3>
+						<h3>ĐĂNG KÝ NHẬN TIN TỪ CHÚNG TÔI</h3>
 					</div>
 					<div class="footer-text">
-						<p>By subscribing to our mailing list you will always get latest news and updates from us.</p>
+						<p>Đăng ký nhận thông tin và nhận nhiều ưu đãi từ BẢNH STORE</p>
 						<form action="#" method="post">
-							<input class="form-control" type="email" name="Email" placeholder="Enter your email..." required="">
+							<input class="form-control" type="email" name="Email" placeholder="Nhập email của bạn..." required="">
 							<button class="btn1">
 								<i class="far fa-envelope" aria-hidden="true"></i>
 							</button>

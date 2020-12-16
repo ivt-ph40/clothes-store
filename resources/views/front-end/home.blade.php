@@ -74,7 +74,7 @@
 									<img src="{{asset($product->productImage->path)}}" class="img-fluid" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Quick View</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -84,7 +84,7 @@
 										<div class="grid_meta">
 											<div class="product_price">
 												<h4>
-													<a href="single.html">{{$product->name}}</a>
+													<a href="{{route('detail', $product->id)}}">{{$product->name}}</a>
 												</h4>
 												<div class="grid-price mt-2">
 													<span class="money ">{{number_format("$product->price",0,"",".")}} VNĐ</span>
@@ -128,7 +128,7 @@
 													<img src="{{asset($product->productImage->path)}}" class="img-fluid" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="single.html" class="link-product-add-cart">Quick View</a>
+															<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Quick View</a>
 														</div>
 													</div>
 													<span class="product-new-top">New</span>
@@ -139,7 +139,7 @@
 														<div class="grid_meta">
 															<div class="product_price">
 																<h4>
-																	<a href="single.html">{{$product->name}}</a>
+																	<a href="{{route('detail', $product->id)}}">{{$product->name}}</a>
 																</h4>
 																<div class="grid-price mt-2">
 																	<span class="money ">{{number_format("$product->price",0,"",".")}} VNĐ</span>
