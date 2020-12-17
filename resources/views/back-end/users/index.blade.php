@@ -15,9 +15,10 @@
         <tr>
             <th style="width: 15%">ID</th>
             <th style="width: 25%">Tên</th>
-            <th style="width: 20%">Email</th>
-            <th style="width: 20%">Số điện thoại</th>
-            <th style="width: 20%">Sửa - Xoá</th>
+            <th style="width: 10%">Email</th>
+            <th style="width: 10%">Số điện thoại</th>
+            <th style="width: 20%">Vai trò</th>
+            <th style="width: 10%">Sửa - Xoá</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,28 @@
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->phone}}</td>
+            <td class="">
+                <form action="{{route('user.role.store', $user->id)}}" method="post" class="d-flex">
+                @csrf
+                @method('put')
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        @foreach ($roles as $role)
+                            @if ($user->role->firstWhere('id', $role->id))
+                            <input class="form-check-input" type="checkbox" id="" value="{{$role->id}}" name="role_id[]" checked>
+                            <label class="form-check-label mr-3" for="">{{$role->name}}</label>
+                            @else
+                            <input class="form-check-input" type="checkbox" id="" value="{{$role->id}}" name="role_id[]">
+                            <label class="form-check-label mr-3" for="">{{$role->name}}</label>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">Sửa</button>
+                </div>
+                </form>    
+            </td>
             <td class="d-flex">
                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-info btn-sm mr-1">
                     <i class="fas fa-pencil-alt"></i>

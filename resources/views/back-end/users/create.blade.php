@@ -31,22 +31,17 @@
         @endif
 
         @if (!$errors->has('password'))
-        <div class="form-group">
+        <div class="form-group" style="position: relative">
             <label for="">Mật khẩu <i style="color:red">*</i></label>
             <input type="password" name="password" id="password" class="form-control" placeholder="">
-        </div>
-        <div class="form-group" style="position: relative;">
-            <i class="far fa-eye" id="check" style="position: absolute; top:-53px; right:0px; padding:10px 20px; cursor: pointer; display:block"></i>
+            <i class="far fa-eye" id="check" style="position: absolute; top:33px; right:0px; padding:10px 35px; cursor: pointer; display:block"></i>
         </div>
         @else
-        <div class="form-group">
+        <div class="form-group" style="position: relative">
             <label for="">Mật khẩu <i style="color:red">*</i></label>
             <input type="password" name="password" id="password" class="form-control is-invalid" placeholder="">
+            <i class="far fa-eye text-danger" id="check" style="position: absolute; top:33px; right:0px; padding:10px 35px; cursor: pointer; display:block"></i>
             <p id="" class="invalid-feedback">{{ $errors->first('password') }}</p>
-        </div>
-        <div class="form-group">
-            <input type="checkbox" name="" id="check" style="">
-            <label for="">Ẩn/Hiện mật khẩu</label>
         </div>
         @endif
 

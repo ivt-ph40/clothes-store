@@ -18,9 +18,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        // dd(\Auth::user()->id);
-        return view('back-end.users.index', compact('users'));
+        $users = User::with('role')->get();
+        $roles = Role::all();
+        // dd($users);
+        return view('back-end.users.index', compact('users', 'roles'));
     }
 
     /**
@@ -105,5 +106,12 @@ class UserController extends Controller
         }
         User::find($id)->delete();
         return redirect()->route('users.index')->with('status', 'Xoá thành công');
+    }
+    public function updateRole(Request $request, $id){
+        $user = User::find($id);
+        // dd($user);
+        $user->role()->sync($request->role_id);
+        return redirect()->route('users.index')->with('status', 'Cập nhật thành công');
+
     }
 }

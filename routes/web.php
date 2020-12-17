@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
 
         Route::resource('comments', 'CommentController'); //Comment
         Route::resource('users', 'UserController'); //User
+        Route::put('users/{id}/roles', 'UserController@updateRole')->name('user.role.store');
         Route::resource('slides', 'SlideController'); //Slide
     });
 });

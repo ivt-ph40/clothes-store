@@ -15,11 +15,21 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(\Auth::check() && \Auth::user()->role()->get()->firstWhere('id', '1')->id == 1)
-        {
-            return $next($request);
+        // dd(\Auth::user()->role);
+        foreach(\Auth::user()->role as $role){
+            // dd($role->pivot->role_id);
+            if(\Auth::check() && $role->pivot->role_id == 1)
+            {
+                return $next($request);
+            }
         }
-        return redirect()->route('home');
+        return redirect()->route('trang-chu');
+        // dd('ok');
+        // if(\Auth::check() && \Auth::user()->role->firstWhere('id', '1') == 1)
+        // {
+        //     return $next($request);
+        // }
+        // return redirect()->route('home');
         
     }
 }
