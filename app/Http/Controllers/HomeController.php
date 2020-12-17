@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-
+        // $this->middleware('auth');
         $categories = Category::where('parent_id' , 0)->get();
         $cateChild = Category::where('parent_id', '!=', 0)->get();
         $products = Product::latest()->take(8)->get();
@@ -29,6 +29,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = Category::where('parent_id' , 0)->get();
+        $cateChild = Category::where('parent_id', '!=', 0)->get();
+        $products = Product::latest()->take(8)->get();
+        // dd($products);
+        return view('front-end.home', compact('categories', 'cateChild', 'products'));
+        // return view('home');
     }
 }

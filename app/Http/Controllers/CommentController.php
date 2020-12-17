@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
+use App\Category;
+use App\Product;
 
 class CommentController extends Controller
 {
@@ -35,7 +37,9 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only('name', 'content', 'product_id');
+        Comment::create($data);
+        return redirect()->route('detail', $data['product_id']);
     }
 
     /**

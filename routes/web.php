@@ -44,8 +44,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
 
 
 Route::get('/san-pham', 'ProductController@index')->name('san-pham');
-Route::get('/san-pham/{id}/products', 'ProductController@showProductWithCate')->name('xem-san-pham');
+Route::get('/san-pham/{id}', 'ProductController@showProductWithCate')->name('xem-san-pham');
 Route::get('/dang-nhap', 'LoginController@create')->name('dang-nhap');
 Route::get('/gioi-thieu', 'PageController@about')->name('gioi-thieu');
+Route::get('/contact', 'PageController@contact')->name('contact');
+Route::get('/detail/{id}', 'ProductController@productDetail')->name('detail');
 
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/tim-kiem', 'ProductController@search')->name('search');
+Route::post('/binh-luan', 'CommentController@store')->name('comment.store');
 // Route::get('/home', 'HomeController@index')->name('home');

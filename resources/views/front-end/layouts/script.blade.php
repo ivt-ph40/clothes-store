@@ -1,5 +1,5 @@
 <!--jQuery-->
-	<script src="web/js/jquery-2.2.3.min.js"></script>
+	<script src="{{asset('web/js/jquery-2.2.3.min.js')}}"></script>
 	<!-- newsletter modal -->
 	<script>
 		$(document).ready(function () {
@@ -9,12 +9,12 @@
 	<!-- // modal -->
 
 	<!--search jQuery-->
-	<script src="web/js/modernizr-2.6.2.min.js"></script>
-	<script src="web/js/classie-search.js"></script>
-	<script src="web/js/demo1-search.js"></script>
+	<script src="{{asset('web/js/modernizr-2.6.2.min.js')}}"></script>
+	<script src="{{asset('web/js/classie-search.js')}}"></script>
+	<script src="{{asset('web/js/demo1-search.js')}}"></script>
 	<!--//search jQuery-->
 	<!-- cart-js -->
-	<script src="web/js/minicart.js"></script>
+	<script src="{{asset('web/js/minicart.js')}}"></script>
 	<script>
 		googles.render();
 
@@ -44,8 +44,8 @@
 	</script>
 	<!-- carousel -->
 	<!-- Count-down -->
-	<script src="web/js/simplyCountdown.js"></script>
-	<link href="css/simplyCountdown.css" rel='stylesheet' type='text/css' />
+	<script src="{{asset('web/js/simplyCountdown.js')}}"></script>
+	<link href="{{asset('web/css/simplyCountdown.css')}}" rel='stylesheet' type='text/css' />
 	<script>
 		var d = new Date();
 		simplyCountdown('simply-countdown-custom', {
@@ -55,7 +55,7 @@
 		});
 	</script>
 	<!--// Count-down -->
-	<script src="web/js/owl.carousel.js"></script>
+	<script src="{{asset('web/js/owl.carousel.js')}}"></script>
 	<script>
 		$(document).ready(function () {
 			$('.owl-carousel').owlCarousel({
@@ -105,8 +105,8 @@
 		});
 	</script>
 	<!-- //dropdown nav -->
-  <script src="web/js/move-top.js"></script>
-    <script src="web/js/easing.js"></script>
+  <script src="{{asset('web/js/move-top.js')}}"></script>
+    <script src="{{asset('web/js/easing.js')}}"></script>
     <script>
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event) {
@@ -135,6 +135,29 @@
         });
     </script>
     <!--// end-smoth-scrolling -->
+    <script src="{{asset('web/js/easy-responsive-tabs.js')}}"></script>
 
-	<script src="web/js/bootstrap.js"></script>
+	<script src="{{asset('web/js/bootstrap.js')}}"></script>
 	<!-- js file -->
+	<script>
+			$(document).ready(function () {
+				$('#horizontalTab').easyResponsiveTabs({
+					type: 'default', //Types: default, vertical, accordion           
+					width: 'auto', //auto or any width like 600px
+					fit: true, // 100% fit in a container
+					closed: 'accordion', // Start closed if in accordion view
+					activate: function (event) { // Callback function if tab is switched
+						var $tab = $(this);
+						var $info = $('#tabInfo');
+						var $name = $('span', $info);
+						$name.text($tab.text());
+						$info.show();
+					}
+				});
+				$('#verticalTab').easyResponsiveTabs({
+					type: 'vertical',
+					width: 'auto',
+					fit: true
+				});
+			});
+	</script>
