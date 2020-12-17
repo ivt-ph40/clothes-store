@@ -55,6 +55,9 @@
 										<input type="checkbox" class="form-check-input" id="exampleCheck1">
 										<label class="form-check-label" for="exampleCheck1">Check me out</label>
 									</div>
+									<div>
+										<a href="#">Đăng ký</a>
+									</div>
 									<button type="submit" class="btn btn-primary submit mb-4">Đăng Nhập</button>
 
 								</form>
@@ -76,8 +79,9 @@
 					<button type="button" class="overlay-close">
 						<i class="fa fa-times" aria-hidden="true"></i>
 					</button>
-					<form action="#" method="post" class="d-flex">
-						<input class="form-control" type="search" placeholder="Search here..." required="">
+					<form action="{{route('search')}}" method="post" class="d-flex">
+						@csrf
+						<input class="form-control" type="search" placeholder="Nhập từ khóa..." required="" name="search">
 						<button type="submit" class="btn btn-primary submit">
 							<i class="fas fa-search"></i>
 						</button>
@@ -120,7 +124,7 @@
 												@foreach($cateChild as $child)
                                                 @if($cate->id == $child->parent_id)
 												<li class="media-mini mt-3">
-													<a href="{{route('xem-san-pham', $cate->id)}}">{{$child->name}}</a>
+													<a href="{{route('xem-san-pham', $child->id)}}">{{$child->name}}</a>
 												</li>
 												@endif
                                                 @endforeach
@@ -133,7 +137,7 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact</a>
+							<a class="nav-link" href="{{route('contact')}}">Contact</a>
 						</li>
 					</ul>
 
