@@ -12,9 +12,10 @@
 */
 
 Route::get('/', 'HomeController@index')->name('trang-chu');
-
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('form-login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::get('/register', 'Auth\RegisterController@showRegisterForm')->name('form-register');
+Route::post('/register', 'Auth\RegisterController@create')->name('register');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function(){

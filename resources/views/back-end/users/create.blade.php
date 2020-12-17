@@ -11,7 +11,7 @@
         </div>
         @else
         <div class="form-group">
-          <label for="">Tên danh mục <i style="color:red">*</i></label>
+          <label for="">Tên <i style="color:red">*</i></label>
           <input type="text" name="name" id="" class="form-control is-invalid" placeholder="" value="{{old('name')}}">
           <p id="" class="invalid-feedback">{{ $errors->first('name') }}</p>
         </div>
@@ -33,26 +33,53 @@
         @if (!$errors->has('password'))
         <div class="form-group">
             <label for="">Mật khẩu <i style="color:red">*</i></label>
-            <input type="password" name="password" id="" class="form-control" placeholder="">
+            <input type="password" name="password" id="password" class="form-control" placeholder="">
+        </div>
+        <div class="form-group" style="position: relative;">
+            <i class="far fa-eye" id="check" style="position: absolute; top:-53px; right:0px; padding:10px 20px; cursor: pointer; display:block"></i>
         </div>
         @else
         <div class="form-group">
             <label for="">Mật khẩu <i style="color:red">*</i></label>
-            <input type="password" name="password" id="" class="form-control is-invalid" placeholder="">
+            <input type="password" name="password" id="password" class="form-control is-invalid" placeholder="">
             <p id="" class="invalid-feedback">{{ $errors->first('password') }}</p>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" name="" id="check" style="">
+            <label for="">Ẩn/Hiện mật khẩu</label>
         </div>
         @endif
 
-
+        @if (!$errors->has('role_id'))
         <div class="form-group">
             <label for="">Vai trò (Role):</label>
             @foreach ($roles as $role)
             <div class="form-check form-check-inline">
+                @if ($role->id != 2)
                 <input class="form-check-input" type="checkbox" id="" value="{{$role->id}}" name="role_id[]">
+                @else
+                <input class="form-check-input" type="checkbox" id="" value="{{$role->id}}" name="role_id[]" checked>
+                @endif
                 <label class="form-check-label" for="">{{$role->name}}</label>
             </div>
             @endforeach
         </div>
+        @else
+        <div class="form-group">
+            <label for="">Vai trò (Role):</label>
+            @foreach ($roles as $role)
+            <div class="form-check form-check-inline">
+                @if ($role->id != 2)
+                <input class="form-check-input" type="checkbox" id="" value="{{$role->id}}" name="role_id[]">
+                @else
+                <input class="form-check-input" type="checkbox" id="" value="{{$role->id}}" name="role_id[]" checked>
+                @endif
+                <label class="form-check-label" for="">{{$role->name}}</label>
+            </div>
+            @endforeach
+            <p id="" class="invalid-feedback">{{ $errors->first('role_id') }}</p>
+        </div>
+        @endif
         
         
         
@@ -73,4 +100,18 @@
         {{-- @endif --}}
         <button class="btn btn-outline-success" type="submit">Tạo</button>
     </form>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('#check').click(function(){
+                if('password' == $('#password').attr('type')){
+                    $('#password').prop('type', 'text');
+                }else{
+                    $('#password').prop('type', 'password');
+                }
+                $('.check').toggle();
+            });
+        });
+    </script>
 @endsection
