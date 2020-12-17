@@ -20,7 +20,6 @@ class HomeController extends Controller
         $products = Product::latest()->take(8)->get();
         // dd($products);
         return view('front-end.home', compact('categories', 'cateChild', 'products'));
-        $this->middleware('auth');
     }
 
     /**

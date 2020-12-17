@@ -27,18 +27,20 @@ class UserCreateRequest extends FormRequest
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'unique:users,email'],
             'password' => ['required', 'min:8', 'max:50'],
+            'role_id' => ['required'],
         ];
 
     }
     public function messages(){
         return [
-            'name.required'         => 'Danh mục không được để trống',
-            'name.max'              => 'Danh mục chứa tối đa 100 ký tự',
+            'name.required'         => 'Tên không được để trống',
+            'name.max'              => 'Tên chứa tối đa 100 ký tự',
             'email.unique'              => 'Email đã tồn tại',
             'email.required'              => 'Email không được để trống',
             'password.required'              => 'Mật khẩu không được để trống',
             'password.min'              => 'Mật khẩu phải ít nhất 8 ký tự',
             'password.max'              => 'Mật khẩu nhiều nhất 50 ký tự',
+            'role_id.required'         => 'Ít nhất chọn 1',
         ];
     }
 }
