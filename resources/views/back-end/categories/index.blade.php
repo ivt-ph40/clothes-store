@@ -109,5 +109,11 @@
                 $(caret_id).toggle();
             });
         });
+
+        //set fade out alert
+        $('.alert').delay(3500).fadeOut(500).queue(function (next) { 
+            $(this).css('display', 'none'); 
+            next();
+        });
     </script>
 @endsection

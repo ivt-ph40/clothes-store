@@ -86,16 +86,11 @@
     </tbody>
 </table>
 @endsection
-{{-- @section('script')
+@section('script')
     <script>
-        $(document).ready(function(){
-            $('.cate-parent').click(function(e){
-                var cate_parent = $(this).attr('data-id');
-                var cate_child_id = ".cate-child-"+cate_parent;
-                $(cate_child_id).fadeToggle(100);
-                var caret_id = ".caret"+cate_parent;
-                $(caret_id).toggle();
-            });
-        });
+    $('.alert').delay(3500).fadeOut(500).queue(function (next) { 
+        $(this).css('display', 'none'); 
+        next();
+    });
     </script>
-@endsection --}}
+@endsection

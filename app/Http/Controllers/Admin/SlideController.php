@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Slide;
 use App\Http\Controllers\Controller;
 
 class SlideController extends Controller
@@ -14,7 +15,8 @@ class SlideController extends Controller
      */
     public function index()
     {
-        //
+        $slides = Slide::all();
+        return view('back-end.slide.index', compact('slides'));
     }
 
     /**
@@ -24,7 +26,7 @@ class SlideController extends Controller
      */
     public function create()
     {
-        //
+        return view('back-end.slide.create');
     }
 
     /**
@@ -35,7 +37,15 @@ class SlideController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        if ($request->hasFile('photo_path')){
+            $name = rand(1,10) . '-' .$request->file('photo_path')->getClientOriginalName(); //Thiết lập tên cho ảnh
+            $request->file('photo_path')->move(public_path('/images/slide'), $name); //Lưu ảnh với tên vừa tạo vào thư mục /img
+            $data['photo_path'] = '/images/slide/'.$name;                   //Tạo đường dẫn ảnh vào để lưu vào DB
+            // dd($data);
+            Slide::create($data);                       //Lưu data vào bảng product và lấy product id
+        }
+        return redirect()->route('slides.index')->with('status', 'Thêm slide thành công');
     }
 
     /**
@@ -69,7 +79,7 @@ class SlideController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -80,6 +90,7 @@ class SlideController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Slide::find($id)->delete();
+        return redirect()->route('slides.index')->with('status', 'Xoá thành công');
     }
 }

@@ -73,10 +73,12 @@
             <div class="form-group">
                 @if (!$errors->has('images'))
                 <label for="">Ảnh <i style="color:red">*</i></label>
-                <input type="file" name="images" id="" class="form-control-file" placeholder="">
+                <input type="file" name="images" id="images" class="form-control-file" placeholder="">
+                <img src="" alt="" id="imgImage" width="200">
                 @else
                 <label for="">Ảnh <i style="color:red">*</i></label>
-                <input type="file" name="images" id="" class="form-control-file is-invalid" placeholder="">
+                <input type="file" name="images" id="images" class="form-control-file is-invalid" placeholder="">
+                <img src="" alt="" id="imgImage" width="200">
                 <p id="" class="invalid-feedback">{{ $errors->first('images') }}</p>
                 @endif
             </div>
@@ -123,6 +125,21 @@
         $('#detail').summernote({
             height: 590,
         });
+    });
+
+    function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                $('#imgImage').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+    $("#images").change(function() {
+        readURL(this);
     });
 </script>
 @endsection
