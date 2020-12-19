@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Slide;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\SlideCreateRequest;
+
 class SlideController extends Controller
 {
     /**
@@ -35,7 +37,7 @@ class SlideController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SlideCreateRequest $request)
     {
         // dd($request);
         if ($request->hasFile('photo_path')){

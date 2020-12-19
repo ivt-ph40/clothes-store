@@ -20,13 +20,14 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::group(['middleware' => 'is.admin'], function(){
-        Route::get('search', 'DashboardController@search')->name('search');
-        Route::post('autocomplete-ajax', 'DashboardController@autocompleteAjax')->name('autocomplete-ajax');
+        Route::get('search', 'DashboardController@search')->name('search'); //search 
+        Route::post('autocomplete-ajax', 'DashboardController@autocompleteAjax')->name('autocomplete-ajax'); //search-autocomplete
 
         Route::get('/', 'DashboardController@index')->name('dashboard'); //DashBoard
         Route::resource('categories', 'CategoryController'); //Category
         Route::resource('products', 'ProductController'); //Product
 
+        //edit product size
         Route::get('products/{id}/size', 'ProductController@productSize')->name('product.size');
         Route::get('products/{id}/sizes/{sizeId}/edit', 'ProductController@productSizeEdit')->name('product.size.edit');
         Route::put('products/{id}/sizes/{sizeId}/edit', 'ProductController@productSizeStore')->name('product.size.store');

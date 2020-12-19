@@ -27,6 +27,7 @@ class ProductEditRequest extends FormRequest
             'name'              => ['required', 'string', 'max:200'],
             'price'             => ['required', 'integer'],
             'size_id'           => ['required'],
+            'images'            => ['required'],
             'description'       => ['required'],
             'detail'            => ['required'],
         ];
