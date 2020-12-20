@@ -56,7 +56,7 @@
 										<label class="form-check-label" for="exampleCheck1">Check me out</label>
 									</div>
 									<div>
-										<a href="#">Đăng ký</a>
+										<a href="{{route('register')}}">Đăng ký</a>
 									</div>
 									<button type="submit" class="btn btn-primary submit mb-4">Đăng Nhập</button>
 
