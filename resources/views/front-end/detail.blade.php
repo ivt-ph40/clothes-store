@@ -41,64 +41,34 @@
 									</p>
 									<div class="color-quality">
 										<div class="color-quality-right">
-											<h5>Quality :</h5>
-											<input type="number">
+											<h5>Số lượng :</h5>
+											<input type="number" value="1" name="quantity">
 										</div>
 									</div>
 									<div class="occasional">
 										<h5>Size :</h5>
 										@foreach($productDetail->size as $size)
 										<div class="colr ert">
-											<label class="radio"><input type="radio" name="radio" checked="" value="{{$size->id}}"><i></i> {{$size->name}}</label>
+											<label class="radio">
+												<input type="radio" data-name="{{$size->name}}"  name=size checked=""  value="{{$size->id}}">
+												 {{$size->name}}
+											</label>
 										</div>
 										@endforeach
 										<div class="clearfix"> </div>
 									</div>
 									<div class="occasion-cart">
 											<div class="googles single-item singlepage">
-													<form action="#" method="post">
-														<input type="hidden" name="cmd" value="_cart">
-														<input type="hidden" name="add" value="1">
-														<input type="hidden" name="googles_item" value="Farenheit">
-														<input type="hidden" name="amount" value="575.00">
-														<button type="submit" class="googles-cart pgoogles-cart">
-															Add to Cart
-														</button>
-														
-													</form>
-		
-												</div>
+										
+												<input type="hidden" name="cmd" value="_cart">
+												<input type="hidden" name="add" value="1">
+												<input type="hidden" name="googles_item" value="{{$productDetail->name}}">
+												<input type="hidden" name="amount" value="{{$productDetail->price}}">
+												<button type="submit" class="googles-cart pgoogles-cart btn-add-to-cart" data-id="{{$productDetail->id}}">
+													Thêm vào giỏ hàng
+												</button>
+											</div>
 									</div>
-									<ul class="footer-social text-left mt-lg-4 mt-3">
-											<li>Share On : </li>
-											<li class="mx-2">
-												<a href="#">
-													<span class="fab fa-facebook-f"></span>
-												</a>
-											</li>
-											<li class="mx-2">
-												<a href="#">
-													<span class="fab fa-twitter"></span>
-												</a>
-											</li>
-											<li class="mx-2">
-												<a href="#">
-													<span class="fab fa-google-plus-g"></span>
-												</a>
-											</li>
-											<li class="mx-2">
-												<a href="#">
-													<span class="fab fa-linkedin-in"></span>
-												</a>
-											</li>
-											<li class="mx-2">
-												<a href="#">
-													<span class="fas fa-rss"></span>
-												</a>
-											</li>
-											
-										</ul>
-			
 								</div>
 								<div class="clearfix"> </div>
 								<!--/tabs-->
@@ -154,20 +124,6 @@
 														</div>
 													</div>
 					
-												</div>
-											</div>
-											<div class="tab3">
-					
-												<div class="single_page">
-													<h6>Irayz Butterfly Sunglasses  (Black)</h6>
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-														blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-														ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-														magna aliqua.</p>
-													<p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-														blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-														ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-														magna aliqua.</p>
 												</div>
 											</div>
 										</div>

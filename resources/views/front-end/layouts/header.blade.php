@@ -23,7 +23,7 @@
 							</a>
 						</li>
 						<li class="galssescart galssescart2 cart cart box_1">
-							<form action="#" method="post" class="last">
+							<form action="{{route('checkout')}}" method="get" class="last">
 								<input type="hidden" name="cmd" value="_cart">
 								<input type="hidden" name="display" value="1">
 								<button class="top_googles_cart" type="submit" name="submit" value="">

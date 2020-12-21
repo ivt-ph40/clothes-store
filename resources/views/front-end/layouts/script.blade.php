@@ -1,5 +1,6 @@
 <!--jQuery-->
 	<script src="{{asset('web/js/jquery-2.2.3.min.js')}}"></script>
+	<script src="{{asset('web/js/toastr.min.js')}}"></script>
 	<!-- newsletter modal -->
 	<script>
 		$(document).ready(function () {
@@ -44,7 +45,6 @@
 	</script>
 	<!-- carousel -->
 	<!-- Count-down -->
-	<script src="{{asset('web/js/simplyCountdown.js')}}"></script>
 	<link href="{{asset('web/css/simplyCountdown.css')}}" rel='stylesheet' type='text/css' />
 	<script>
 		var d = new Date();
@@ -160,4 +160,139 @@
 					fit: true
 				});
 			});
+	</script>
+
+
+	<script>	
+	
+		var url = '{{asset('')}}';
+		$('.btn-add-to-cart').on('click', function(){
+		    var product_id = $(this).attr('data-id');
+		    var quantity = $('input[name=quantity]').length > 0 ?  $('input[name=quantity]').val() : 1;
+		    var size_id = $('input[name=size]:checked').val();
+		    var size_name = $('input[name=size]:checked').data('name');
+		    $.ajaxSetup({
+			   	headers: {
+			     	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		   		}
+		 	});
+
+			$.ajax({
+				/* the route pointing to the post function */
+				url: '{{route('addCart')}}',
+				type: 'post',
+				/* send the csrf-token and the input to the controller */
+				data: {product_id: product_id, quantity: quantity, size_id:size_id, size_name:size_name},
+				// remind that 'data' is the response of the AjaxController
+				success: function (data) {
+					if (data.status) {
+						var image = url + data.data.options.image;
+						var price = (data.data.price * data.data.qty).toLocaleString('vi') + ' VNĐ';
+	     				var html = '<li id="row-id'+data.data.rowId+'" class="sbmincart-item"><div class="sbmincart-details-img"> <img src="'+image+'" class="img-fluid" alt=""></div><div class="sbmincart-details-name"> <a class="sbmincart-name" href="">'+data.data.name+'</a>                 <ul class="sbmincart-attributes">                                                                           </ul> </div> <div class="sbmincart-details-quantity"><input class="sbmincart-quantity" readonly data-sbmincart-idx="0" name="quantity_1" type="text" pattern="[0-9]*" value="'+data.data.qty+'" autocomplete="off">             </div><div class="sbmincart-details-remove"> <button type="button" class="sbmincart-remove"  data-rowid="'+data.data.rowId+'" data-sbmincart-idx="0">×</button> </div><div class="sbmincart-details-price">  <span class="sbmincart-price">'+price+'</span>              </div></li>';
+	                 	if ($('li#row-id'+data.data.rowId) .length > 0 ) {
+	                 		// console.log($('li#row-id'+data.data.rowId).find('input[name=quantity_1]'));return;
+	                 		$('li#row-id'+data.data.rowId).find('input.sbmincart-quantity').val(data.data.qty);
+	                 		$('li#row-id'+data.data.rowId).find('span.sbmincart-price').text(price)
+
+	                 	} else {
+	                 		$('#ul-carts').append(html);
+	                 	}
+	                 	$('span#total-cart').text(data.total + 
+	                 		'VND');
+	                 	toastr.success('Thêm giỏ hàng thành công');
+	                 	$('#staplesbmincart').show();
+					}
+					
+				 
+				}
+			});
+		})
+	</script>
+
+	<script>
+		$(document).ready(function(){
+		 	$(".qtybutton").on("click", function() {
+		      var $button = $(this);
+		      var oldValue = $button.parent().find("span.quantity").text();
+		      var rowId = $button.parent().find('input').val();
+		      if ($button.hasClass("value-plus")) {
+		        var newVal = parseFloat(oldValue) + 1;
+		      } else {
+		         // Don't allow decrementing below zero
+		        if (oldValue > 1) {
+		       		var newVal = parseFloat(oldValue) - 1;
+		       	} else {
+		       		newVal = 1;
+		        }
+	    	}
+	      	$button.parent().find("span.quantity").text(newVal);
+	      	$.ajaxSetup({
+			   	headers: {
+			     	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		   		}
+	 		});
+
+			$.ajax({
+				/* the route pointing to the post function */
+				url: '{{route('updateCart')}}',
+				type: 'post',
+				/* send the csrf-token and the input to the controller */
+				data: {rowId: rowId, quantity: newVal},
+				// remind that 'data' is the response of the AjaxController
+				success: function (data) {
+			 		if (data.status) {
+					 	$('span#total-cart').text(data.total + 'VND');
+				 	}
+				}
+			});
+
+
+	     });
+		$(document).on('click', '.sbmincart-closer', function(){
+			$('#staplesbmincart').hide();
+		})
+		$(document).on('click' , '.sbmincart-remove', function(){
+			var rowId = $(this).attr('data-rowid');
+			$.ajaxSetup({
+			   	headers: {
+			     	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		   		}
+	 		});
+
+			$.ajax({
+				/* the route pointing to the post function */
+				url: '{{route('removeCart')}}',
+				type: 'post',
+				/* send the csrf-token and the input to the controller */
+				data: {rowId: rowId},
+				// remind that 'data' is the response of the AjaxController
+				success: function (data) {
+					console.log(data);
+				 	if (data.status) {
+				 		if ($('li#row-id'+data.rowId).length > 0 ) {
+					 		$('li#row-id' + data.rowId).remove();
+				 		}
+
+				 		if ($('tr#row-id'+data.rowId).length > 0 ) {
+					 		$('tr#row-id' + data.rowId).remove();
+				 		}
+
+				 		if(data.count == 0) {
+			 			 	var html = '<tr>\n' +
+									    '<td colspan="6">Không có sản phẩm nào trong giỏ hàng</td>\n' +
+									    '</tr>';
+					    	$('#tbody-content').html(html);
+
+				 		}
+
+					 	$('span#total-cart').text(data.total + 
+		                 		'VND');
+	                 	toastr.success('Xóa sản phẩm thành công');
+
+				 	}
+				}
+			});
+		});
+	})
+		
 	</script>
