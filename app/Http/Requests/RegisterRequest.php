@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserCreateRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,8 @@ class UserCreateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'unique:users,email'],
-            'password' => ['required', 'min:8', 'max:50'],
-            'role_id' => ['required'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8', 'max:50', 'confirmed'],
         ];
 
     }
@@ -40,7 +39,7 @@ class UserCreateRequest extends FormRequest
             'password.required'              => 'Mật khẩu không được để trống',
             'password.min'              => 'Mật khẩu phải ít nhất 8 ký tự',
             'password.max'              => 'Mật khẩu nhiều nhất 50 ký tự',
-            'role_id.required'         => 'Ít nhất chọn 1',
+            'password.confirmed'              => 'Nhập lại mật khẩu không khớp',
         ];
     }
 }

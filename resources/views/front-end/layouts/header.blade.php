@@ -18,9 +18,14 @@
 				<div class="col-md-3 top-info-cart text-right mt-lg-4">
 					<ul class="cart-inner-info">
 						<li class="button-log">
+							@if(\Auth::check())
+							<a href="">Xin chào {!! '<b>'.\Auth::user()->name.'</b>'!!}</a>
+							@else
 							<a class="btn-open" href="#">
 								<span class="fa fa-user" aria-hidden="true"></span>
 							</a>
+							@endif
+							
 						</li>
 						<li class="galssescart galssescart2 cart cart box_1">
 							<form action="{{route('checkout')}}" method="get" class="last">
@@ -41,22 +46,23 @@
 						<div class="wrap">
 							<h5 class="text-center mb-4">Đăng Nhập</h5>
 							<div class="login p-5 bg-dark mx-auto mw-100">
-								<form action="#" method="post">
+								<form action="{{route('login')}}" method="post">
+									@csrf
 									<div class="form-group">
 										<label class="mb-2">Tài khoản</label>
-										<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
+										<input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
 										<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 									</div>
 									<div class="form-group">
 										<label class="mb-2">Mật khẩu</label>
-										<input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+										<input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
 									</div>
 									<div class="form-check mb-2">
 										<input type="checkbox" class="form-check-input" id="exampleCheck1">
 										<label class="form-check-label" for="exampleCheck1">Check me out</label>
 									</div>
 									<div>
-										<a href="#">Đăng ký</a>
+										<a href="{{route('register')}}">Đăng ký</a>
 									</div>
 									<button type="submit" class="btn btn-primary submit mb-4">Đăng Nhập</button>
 

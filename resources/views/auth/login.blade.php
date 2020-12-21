@@ -49,12 +49,12 @@
 										<div class="form-group">
 											<input type="password" name="password" id="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nhập mật khẩu">
 										</div>
-										<div class="form-group">
+										{{-- <div class="form-group">
 											<div class="custom-control custom-checkbox small">
 												<input type="checkbox" class="custom-control-input" id="customCheck" name="remember_me">
 												<label class="custom-control-label" for="customCheck">Ghi nhớ tôi</label>
 											</div>
-										</div>
+										</div> --}}
 										<button class="btn btn-primary btn-user btn-block" type="submit">
 											Đăng nhập
 										</button>
@@ -71,7 +71,7 @@
 										<a class="small" href="#">Quên Password?</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="#">Chưa có tài khoản? Tạo mới</a>
+										<a class="small" href="{{route('register')}}">Chưa có tài khoản? Tạo mới</a>
 									</div>
 								</div>
 							</div>

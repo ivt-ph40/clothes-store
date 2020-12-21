@@ -6,7 +6,7 @@
 <h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
 <div class="row">
 	<!-- Category -->
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-8 col-xs-12 mb-4">
         <div class="card border-left-success shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -27,7 +27,7 @@
     </div>
 
     <!-- product -->
-    <div class="col-xl-2 col-md-4 mb-4">
+    <div class="col-xl-2 col-md-4 col-xs-12 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -44,7 +44,7 @@
     </div>
 
     <!-- user -->
-    <div class="col-xl-2 col-md-4 mb-4">
+    <div class="col-xl-2 col-md-4 col-xs-12 mb-4">
         <div class="card border-left-warning shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -62,7 +62,7 @@
     </div>
 
     <!-- Category -->
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-8 col-xs-12 mb-4">
         <div class="card border-left-danger shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">

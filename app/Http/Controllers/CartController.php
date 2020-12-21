@@ -85,9 +85,10 @@ class CartController extends Controller
         $data['phone'] = $data['phone'];
         $data['email'] = $data['email'];
         $data['message'] = $data['message'];
-        $data['adress'] = $data['address'];
-        $data['adress_id'] = Auth::check() ? Auth::user()->address->id : null; 
+        $data['address'] = $data['address'];
+        // $data['address_id'] = Auth::check() ? Auth::user()->address->id : null; 
         $data['user_id'] = Auth::check() ? Auth::user()->id : null;
+        dd($data['user_id']);
         $order = Order::create($data);
         foreach (\Cart::content() as $key => $item) {
             $datadetail['product_id'] = $item->id;

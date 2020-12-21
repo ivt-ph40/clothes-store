@@ -123,5 +123,10 @@ class OrderController extends Controller
         $orderStatus = OrderStatus::where('id', '<=', 5)->get();
         // dd($orders);
         return view('back-end.orders.index', compact('orders', 'orderStatus'));
+    } 
+    public function searchOrder(Request $request){
+        $orders = Order::with('orderStatus')->where('name', 'like', '%'.$request->order_search.'%')->orWhere('email', 'like', '%'.$request->order_search.'%')->orWhere('phone', 'like', '%'.$request->order_search.'%')->orderBy('order_status_id', 'asc')->paginate(10);
+        $orderStatus = OrderStatus::all();
+        return view('back-end.orders.index', compact('orders', 'orderStatus'));
     }
 }

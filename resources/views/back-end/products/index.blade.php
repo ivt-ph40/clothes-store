@@ -31,7 +31,7 @@
 
             <td><img src="{{asset($product->productImage->path)}}" alt="" width="80px"></td>
 
-            <td scope="row"><a href="{{route('categories.show',$product->category->id)}}" class="btn btn-outline-success" style="text-decoration: none">{{$product->category->name}}</a></td>
+            <td scope="row"><a href="{{route('categories.show',$product->category->id)}}" class="btn btn-outline-success btn-sm" style="text-decoration: none">{{$product->category->name}}</a></td>
 
             <td>{{ number_format($product->price ?? 0,0,',','.') }} VNĐ</td>
 
@@ -86,10 +86,11 @@
 
 @endsection
 
-{{-- @section('script')
+@section('script')
     <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable();
-        });
+    $('.alert').delay(2000).fadeOut(500).queue(function (next) { 
+        $(this).css('display', 'none'); 
+        next();
+    });
     </script>
-@endsection --}}
+@endsection

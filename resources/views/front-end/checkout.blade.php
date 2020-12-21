@@ -128,14 +128,14 @@
 									<div class="first-row form-group">
 										<div class="controls">
 											<label class="control-label">Họ và tên</label>
-											<input class="billing-address-name form-control" type="text" name="name" placeholder="Vui lòng nhập họ và tên">
+											<input class="billing-address-name form-control" type="text" name="name" placeholder="Vui lòng nhập họ và tên" value="{{\Auth::user()->name}}">
 											@if ($errors->has('name'))
 												<span class="red">{{$errors->first('name')}}</span>
 											@endif
 										</div>
 										<div class="controls">
 											<label class="control-label">Email</label>
-											<input class="billing-address-name form-control" type="text" name="email" placeholder="Vui lòng nhập họ và tên">
+											<input class="billing-address-name form-control" type="text" name="email" placeholder="Vui lòng nhập họ và tên" value="{{\Auth::user()->email}}">
 											@if ($errors->has('email'))
 												<span class="red">{{$errors->first('email')}}</span>
 											@endif
@@ -144,7 +144,7 @@
 											<div class="card_number_grid_left">
 												<div class="controls">
 													<label class="control-label">Số điện thoại</label>
-													<input class="form-control" name="phone" type="text" placeholder="Vui lòng nhập số điện thoại">
+													<input class="form-control" name="phone" type="text" placeholder="Vui lòng nhập số điện thoại" value="{{\Auth::user()->phone}}">
 													@if ($errors->has('phone'))
 														<span class="red">{{$errors->first('phone')}}</span>
 													@endif
@@ -153,7 +153,7 @@
 											<div class="card_number_grid_right">
 												<div class="controls">
 													<label class="control-label">Địa chỉ </label>
-													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ">
+													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="{{\Auth::user()->address->first()->address1}}">
 													@if ($errors->has('address'))
 														<span class="red">{{$errors->first('address')}}</span>
 													@endif

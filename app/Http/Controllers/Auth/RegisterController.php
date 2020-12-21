@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\RegisterRequest;
+use Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
@@ -68,5 +71,17 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function showRegisterForm()
+    {
+        return view('auth.register');
+    }
+    public function register(RegisterRequest $request){
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $user_id = User::create($data)->id;
+        $user = User::find($user_id)->role()->attach(2);
+        \Auth::login(User::find($user_id));
+        return redirect()->route('dashboard');
     }
 }
