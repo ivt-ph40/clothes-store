@@ -107,7 +107,7 @@ class DashboardController extends Controller
             $products = Product::with('productImage')->where('name', 'like', '%'.$data.'%')->get();
             $output = '<ul class="dropdown-menu" style="display:block; position:absolute; width:360px">';
             foreach($products as $product){
-                $output .= '<li class="search-product-list">'.$product->name.'</li>';
+                $output .= '<li class="search-product-list pt-1 pb-1 pl-3">'.$product->name.'</li>';
             }
             $output .= '</ul>';
             echo $output;

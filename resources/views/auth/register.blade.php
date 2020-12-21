@@ -40,26 +40,42 @@
 									</div>
 									<form class="user" action="{{route('register')}}" method="POST">
 										@csrf
-										@if(session()->has('error'))
-											<p class="alert-danger">{{session()->get('error')}}</p>
-										@endif
+										
 										<div class="form-group">
+											@if(!$errors->has('name'))
 											<input type="text" name="name" id="name" class="form-control form-control-user" id="" aria-describedby="" placeholder="Nhập tên của bạn" value="{{old('name')}}">
+											@else
+											<input type="text" name="name" id="name" class="form-control form-control-user is-invalid" id="" aria-describedby="" placeholder="Nhập tên của bạn" value="{{old('name')}}">
+											<p class="invalid-feedback ml-3">{{$errors->first('name')}}</p>
+											@endif
                                         </div>
                                         <div class="form-group">
+											@if(!$errors->has('email'))
 											<input type="email" name="email" id="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nhập địa chỉ email" value="{{old('email')}}">
+											@else
+											<input type="email" name="email" id="email" class="form-control form-control-user is-invalid" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nhập địa chỉ email" value="{{old('email')}}">
+											<p class="invalid-feedback ml-3">{{$errors->first('email')}}</p>
+											@endif
 										</div>
 										<div class="form-group">
-											<input type="password" name="password" id="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nhập mật khẩu">
+											@if(!$errors->has('password'))
+											<input type="password" name="password" id="password" class="form-control form-control-user" placeholder="Nhập mật khẩu">
+											@else
+											<input type="password" name="password" id="password" class="form-control form-control-user is-invalid" placeholder="Nhập mật khẩu">
+												<p class="invalid-feedback ml-3">{{$errors->first('password')}}</p>
+											@endif
 										</div>
 										<div class="form-group">
+											<input type="password" name="password_confirmation" id="password_confirmation" class="form-control form-control-user" placeholder="Nhập lại mật khẩu">
+										</div>
+										{{-- <div class="form-group">
 											<div class="custom-control custom-checkbox small">
 												<input type="checkbox" class="custom-control-input" id="customCheck" name="remember_me">
 												<label class="custom-control-label" for="customCheck">Ghi nhớ tôi</label>
 											</div>
-										</div>
+										</div> --}}
 										<button class="btn btn-primary btn-user btn-block" type="submit">
-											Đăng nhập
+											Đăng ký
 										</button>
 										<!-- <hr>
 										<a href="#" class="btn btn-google btn-user btn-block">
@@ -71,10 +87,7 @@
 									</form>
 									<hr>
 									<div class="text-center">
-										<a class="small" href="#">Quên Password?</a>
-									</div>
-									<div class="text-center">
-										<a class="small" href="#">Chưa có tài khoản? Tạo mới</a>
+										<a class="small" href="{{route('login')}}">Đăng nhập</a>
 									</div>
 								</div>
 							</div>

@@ -53,7 +53,7 @@ class ProductController extends Controller
         if ($request->hasFile('images')){
             $name = rand(1,9999) . '-' .$request->file('images')->getClientOriginalName(); //Thiết lập tên cho ảnh
             $request->file('images')->move(public_path('/images'), $name); //Lưu ảnh với tên vừa tạo vào thư mục /img
-             $product_images['path'] = '/images/'.$name;                   //Tạo đường dẫn ảnh vào để lưu vào DB
+            $product_images['path'] = '/images/'.$name;                   //Tạo đường dẫn ảnh vào để lưu vào DB
             $productID = Product::create($data)->id;                       //Lưu data vào bảng product và lấy product id
             $product_images['product_id'] = $productID;                    //Gán product id cho product_id ở bảng product_detail
             ProductImage::create($product_images);                         //Lưu data vào bảng product_detail
@@ -128,7 +128,6 @@ class ProductController extends Controller
         foreach($orders as $order){
             foreach($productDel->orderDetail as $orderDetail){
                 if ($orderDetail->order_id == $order->id) {
-                    // dd($productDel);
                     return redirect()->back()->with(['error' => 'Sản phẩm này đang có đơn đặt hàng, không thể xoá']);
                 }
             }
@@ -148,7 +147,6 @@ class ProductController extends Controller
                             ->where('product_id', $id)
                             ->where('size_id', $sizeId)
                             ->get();
-        // dd($product);
         return view('back-end.products.product-size.edit', compact('product'));
     }
 
@@ -159,7 +157,6 @@ class ProductController extends Controller
             foreach($product->size as $size){
                 if ($size->pivot->size_id == $sizeId) {
                     $size->pivot->quantities = $request->quantities;
-                    // dd($size->pivot);
                     $size->pivot->update(['quantities' =>$size->pivot->quantities]);
                 }
             }

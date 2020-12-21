@@ -32,13 +32,28 @@
         <div class=" pr-4 mr-4 border-right">
             <a href="{{route('orders.index')}}" class="btn btn-outline-danger btn-sm "><i class="fas fa-times"></i></a>
         </div>
-        
     </div>
+
+    <div class="" >
+        <form action="{{route('order.search')}}" method="get" class="d-flex">
+            @csrf
+            <div class="form-group mr-1">
+                <label class="mb-0" for="" class="">Tìm kiếm đơn hàng:</label>
+                <input type="text" name="order_search" id="" class="form-control form-control-sm" value="{{old('order_search')}}" placeholder="Nhập tên, SĐT, Email">
+            </div>
+            <div class="form-group mt-4 mr-4 pr-4 border-right">
+                <button type="submit" class="btn btn-secondary btn-sm">Tìm kiếm</button> 
+            </div>
+        </form>
+    </div>
+
     <div class="">
         <div class="form-group mt-4">
             <a href="{{route('show.order.cancelled')}}" class="btn btn-info btn-sm">Xem đơn hàng đã huỷ</a>
         </div>
     </div>
+
+    
     
 </div>
 <table class="table table-striped shadow bg-white">
@@ -105,7 +120,7 @@
 @endsection
 @section('script')
     <script>
-    $('.alert').delay(3500).fadeOut(500).queue(function (next) { 
+    $('.alert').delay(2000).fadeOut(500).queue(function (next) { 
         $(this).css('display', 'none'); 
         next();
     });

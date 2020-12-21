@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index')->name('trang-chu');
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('form-login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/register', 'Auth\RegisterController@showRegisterForm')->name('form-register');
-Route::post('/register', 'Auth\RegisterController@create')->name('register');
+Route::post('/register', 'Auth\RegisterController@register')->name('register');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function(){
@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
         Route::resource('orders', 'OrderController'); //Order
         Route::put('order-status/{id}/edit', 'OrderController@orderStatusEdit')->name('order.status.edit');
         Route::get('status-filter', 'OrderController@orderStatusFilter')->name('order.status.filter');
+        Route::get('order-search', 'OrderController@searchOrder')->name('order.search');
         Route::get('status/dang-cho-xac-nhan', 'OrderController@orderStatus1')->name('order.status.1');
         Route::get('show-orders-cancelled', 'OrderController@showOrderCancel')->name('show.order.cancelled');
 

@@ -50,7 +50,7 @@ class UserController extends Controller
         $user = User::find($user_id);
         $user->role()->attach($request->role_id);//create record RoleUser Table
         
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('status', 'Thêm User thành công');
     }
 
     /**
@@ -72,7 +72,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::with('role')->find($id);
+        $roles = Role::all();
+        return view('back-end.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -84,7 +86,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $data = $request->only('name', 'email', 'phone');
+        $user->update($data);
+        return redirect()->route('users.index')->with('status', 'Sửa thành công');
     }
 
     /**
@@ -109,7 +114,6 @@ class UserController extends Controller
     }
     public function updateRole(Request $request, $id){
         $user = User::find($id);
-        // dd($user);
         $user->role()->sync($request->role_id);
         return redirect()->route('users.index')->with('status', 'Cập nhật thành công');
 
