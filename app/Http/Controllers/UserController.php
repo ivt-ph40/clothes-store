@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Category;
 
 class UserController extends Controller
 {
@@ -14,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::where('parent_id' , 0)->get();
+        $cateChild = Category::where('parent_id', '!=', 0)->get();
+        return view('front-end.user', compact('categories', 'cateChild'));
     }
 
     /**

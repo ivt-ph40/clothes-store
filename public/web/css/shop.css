@@ -232,9 +232,18 @@ button.top_googles_cart {
 	text-decoration: none;
 }
 
+#staplesbmincart .sbmincart-details-img {
+	float: left;
+	width: 24%;
+}
+#staplesbmincart .sbmincart-details-img img {
+	width: 50px;
+	height: 50px;
+}
+
 #staplesbmincart .sbmincart-details-name {
 	float: left;
-	width: 62%;
+	width: 38%;
 }
 
 #staplesbmincart .sbmincart-details-quantity {

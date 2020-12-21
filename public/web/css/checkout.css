@@ -40,6 +40,14 @@ table.timetable_sub {
 	border-right: 1px solid #ded2d2;
 }
 
+.creditly-card-form .form-control {
+	margin-bottom: 10px !important;
+}
+
+.creditly-card-form .red {
+	color: red;
+}
+
 .timetable_sub th,
 .timetable_sub td {
     text-align: center;
@@ -284,6 +292,14 @@ input.checkbox {
 }
 
 
+.checkout-right .th-img {
+	width: 34%;
+}
+
+.checkout-right .close1 {
+	right: 0px !important;
+}
+
 /*--/payment--*/
 
 
@@ -527,4 +543,70 @@ button.submit.check_out {
         right: -1px;
         top: -23px;
     }
+}
+
+.gh-main {
+    max-width: 1020px;
+    margin: 30px auto;
+}
+.gh-ssmain {
+    max-width: 510px;
+    width: 100%;
+    margin: 50px auto;
+}
+.gh-sstop {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.ghi-ss {
+    width: 80px;
+    height: 80px;
+    background-position: -168px -1px;
+}
+
+.ghic {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(/../../images/icon.png);
+}
+#error-login{
+    text-align: center;
+}
+.fs-404ifo {
+    max-width: 610px;
+    margin: 40px auto;
+    text-align: center;
+}
+.fs-4logo {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.fs-4itit {
+    font-size: 22px;
+    color: #4782c5;
+    margin: 30px 0 15px;
+    font-weight: bold;
+}
+.fs-4call {
+    font-size: 14px;
+    color: #000000;
+    margin: 15px 0 0 0;
+}
+.ts-4ctxt {
+    color: #747474;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: 16px 0;
+}
+.fs-4back, .fs-4back:hover, .fs-4back:active, .fs-4back:focus {
+    display: inline-block;
+    width: 241px;
+    height: 50px;
+    border-radius: 2px;
+    color: #307f0f;
+    border: solid 1px #34a105;
+    text-align: center;
+    line-height: 50px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
 }

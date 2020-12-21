@@ -1,3 +1,4 @@
+
 /*!
  * mincart
  * The Mini Cart is a great way to improve your PayPal shopping cart integration.
@@ -3083,7 +3084,7 @@ module.exports = viewevents = {
             this.redraw();
             this.hide();
         }
-    }
+    } 
 
 };
 

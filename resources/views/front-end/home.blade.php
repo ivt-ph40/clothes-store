@@ -92,18 +92,13 @@
 											</div>
 										</div>
 										<div class="googles single-item hvr-outline-out">
-											<form action="#" method="post">
 												<input type="hidden" name="cmd" value="_cart">
 												<input type="hidden" name="add" value="1">
 												<input type="hidden" name="googles_item" value="Farenheit">
 												<input type="hidden" name="amount" value="575.00">
-												<button type="submit" class="googles-cart pgoogles-cart">
+												<button type="submit" class="googles-cart pgoogles-cart btn-add-to-cart" data-id="{{$product->id}}">
 													<i class="fas fa-cart-plus"></i>
 												</button>
-
-												
-											</form>
-
 										</div>
 									</div>
 									<div class="clearfix"></div>
@@ -113,7 +108,7 @@
 					</div>
 					@endforeach
 				</div>
-				<h3 class="tittle-w3layouts my-lg-4 my-4">Flash Sale </h3>
+				<h3 class="tittle-w3layouts my-lg-4 my-4">Sản phẩm nổi bật </h3>
 				<div class="slider-img mid-sec">
 					<!--//banner-sec-->
 					<div class="mid-slider">
@@ -147,15 +142,13 @@
 															</div>
 														</div>
 														<div class="googles single-item hvr-outline-out">
-															<form action="#" method="post">
 																<input type="hidden" name="cmd" value="_cart">
 																<input type="hidden" name="add" value="1">
 																<input type="hidden" name="googles_item" value="Fastrack Aviator">
 																<input type="hidden" name="amount" value="325.00">
-																<button type="submit" class="googles-cart pgoogles-cart">
+																<button type="submit" class="googles-cart pgoogles-cart btn-add-to-cart" data-id="{{$product->id}}">
 																	<i class="fas fa-cart-plus"></i>
 																</button>
-															</form>
 														</div>
 													</div>
 												</div>

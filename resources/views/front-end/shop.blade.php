@@ -27,7 +27,8 @@
 						<div class="side-bar col-lg-3">
 							<div class="search-hotel">
 								<h3 class="agileits-sear-head">Tìm kiếm</h3>
-								<form action="#" method="post">
+								<form action="{{route('search')}}" method="post">
+									@csrf
 										<input class="form-control" type="search" name="search" placeholder="Nhập từ khóa..." required="">
 										<button class="btn1">
 												<i class="fas fa-search"></i>
@@ -44,8 +45,8 @@
 										<img src="{{asset($min->productImage->path)}}" alt="">
 									</div>
 									<div class="img-deal1">
-										<h3><a href="#">{{$min->name}}</a></h3>
-										<a href="#">{{$min->price}}</a>
+										<h3><a href="{{route('detail', $min->id)}}">{{$min->name}}</a></h3>
+										<a href="{{route('detail', $min->id)}}">{{$min->price}}</a>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -84,7 +85,7 @@
 														<div class="grid_meta">
 															<div class="product_price">
 																<h4>
-																	<a href="single.html">{{$product->name}}</a>
+																	<a href="{{route('detail', $product->id)}}">{{$product->name}}</a>
 																</h4>
 																<div class="grid-price mt-2">
 																	<span class="money ">{{number_format("$product->price",0,"",".")}} VNĐ</span>
@@ -92,15 +93,13 @@
 															</div>
 														</div>
 														<div class="googles single-item hvr-outline-out">
-															<form action="#" method="post">
 																<input type="hidden" name="cmd" value="_cart">
 																<input type="hidden" name="add" value="1">
 																<input type="hidden" name="googles_item" value="Farenheit">
 																<input type="hidden" name="amount" value="575.00">
-																<button type="submit" class="googles-cart pgoogles-cart">
+																<button data-id="{{$product->id}}" type="submit" class="googles-cart pgoogles-cart btn-add-to-cart" >
 																	<i class="fas fa-cart-plus"></i>
 																</button>
-															</form>
 														</div>
 													</div>
 													<div class="clearfix"></div>
@@ -130,7 +129,7 @@
 														<img src="{{asset($ena->productImage->path)}}" class="img-fluid" alt="">
 														<div class="men-cart-pro">
 															<div class="inner-men-cart-pro">
-																<a href="single.html" class="link-product-add-cart">Quick View</a>
+																<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Quick View</a>
 															</div>
 														</div>
 														<span class="product-new-top">New</span>
@@ -148,15 +147,13 @@
 																</div>
 															</div>
 															<div class="googles single-item hvr-outline-out">
-																<form action="#" method="post">
 																	<input type="hidden" name="cmd" value="_cart">
 																	<input type="hidden" name="add" value="1">
 																	<input type="hidden" name="googles_item" value="Fastrack Aviator">
 																	<input type="hidden" name="amount" value="325.00">
-																	<button type="submit" class="googles-cart pgoogles-cart">
+																	<button type="submit" data-id="{{$ena->id}}" class="googles-cart pgoogles-cart btn-add-to-cart">
 																		<i class="fas fa-cart-plus"></i>
 																	</button>
-																</form>
 															</div>
 														</div>
 													</div>

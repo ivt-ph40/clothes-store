@@ -53,8 +53,16 @@ Route::get('/dang-nhap', 'LoginController@create')->name('dang-nhap');
 Route::get('/gioi-thieu', 'PageController@about')->name('gioi-thieu');
 Route::get('/contact', 'PageController@contact')->name('contact');
 Route::get('/detail/{id}', 'ProductController@productDetail')->name('detail');
+Route::post('add-to-cart', 'CartController@addCart')->name('addCart');
+Route::post('remove-cart', 'CartController@removeCart')->name('removeCart');
+Route::post('update-cart', 'CartController@updateCart')->name('updateCart');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/tim-kiem', 'ProductController@search')->name('search');
 Route::post('/binh-luan', 'CommentController@store')->name('comment.store');
+Route::get('/account', 'UserController@index')->name('account');
+Route::get('/checkout', 'CartController@index')->name('checkout');
+Route::post('/checkout', 'CartController@checkout')->name('checkout-post');
+Route::get('/checkout-success', 'CartController@checkoutSuccess')->name('checkoutSuccess');
+
 // Route::get('/home', 'HomeController@index')->name('home');
