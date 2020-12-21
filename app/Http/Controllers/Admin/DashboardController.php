@@ -96,7 +96,9 @@ class DashboardController extends Controller
     }
     public function search(Request $request){
         $search = $request->search;
-        $result = Product::with('category')->where('name', 'like', '%'.$search.'%')->paginate(10);
+        $result = Product::with('category')->where('name', 'like', '%'.$search.'%')->orWhereHas('category', function($query) use($search){
+            return $query->where('name', 'like', '%'.$search.'%');
+        })->paginate(10);
         return view('back-end.search', compact('result', 'search'));
     }
     public function autocompleteAjax(Request $request){

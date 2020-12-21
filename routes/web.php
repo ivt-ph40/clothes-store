@@ -20,7 +20,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function(){
     Route::group(['middleware' => 'is.admin'], function(){
-        Route::get('search', 'DashboardController@search')->name('search'); //search 
+        Route::get('search', 'DashboardController@search')->name('admin.search'); //search 
         Route::post('autocomplete-ajax', 'DashboardController@autocompleteAjax')->name('autocomplete-ajax'); //search-autocomplete
 
         Route::get('/', 'DashboardController@index')->name('dashboard'); //DashBoard
