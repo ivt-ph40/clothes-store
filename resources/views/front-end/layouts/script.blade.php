@@ -282,17 +282,14 @@
 									    '<td colspan="6">Không có sản phẩm nào trong giỏ hàng</td>\n' +
 									    '</tr>';
 					    	$('#tbody-content').html(html);
-
 				 		}
-
+				 		
 					 	$('span#total-cart').text(data.total + 
 		                 		'VND');
 	                 	toastr.success('Xóa sản phẩm thành công');
-
 				 	}
 				}
 			});
 		});
-	})
-		
+	})	
 	</script>

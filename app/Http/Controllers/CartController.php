@@ -42,6 +42,7 @@ class CartController extends Controller
 			$productInfo['options']['size_id'] = $sizeId ? $sizeId: $product->size->first()->pivot->size_id;
 		}
     	$cart = \Cart::add($productInfo);
+        // dd($cart);
 		return response()->json(['status'=>true, 'data'=>$cart ,'total'=> str_replace( ',' , '.', substr(\Cart::subtotal(), 0, strrpos(\Cart::subtotal(), '.')))]);
 
     }
@@ -88,7 +89,7 @@ class CartController extends Controller
         $data['address'] = $data['address'];
         // $data['address_id'] = Auth::check() ? Auth::user()->address->id : null; 
         $data['user_id'] = Auth::check() ? Auth::user()->id : null;
-        dd($data['user_id']);
+        // dd($data['user_id']);
         $order = Order::create($data);
         foreach (\Cart::content() as $key => $item) {
             $datadetail['product_id'] = $item->id;

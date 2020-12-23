@@ -11,10 +11,10 @@
 				<div class="inner_breadcrumb">
 					<ul class="short">
 						<li>
-							<a href="{{route('trang-chu')}}">Home</a>
+							<a href="{{route('trang-chu')}}">Trang chủ</a>
 							<i>|</i>
 						</li>
-						<li>Contact Us</li>
+						<li>Liên hệ</li>
 					</ul>
 				</div>
 			</div>
@@ -22,7 +22,7 @@
 	</div>
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
 		<div class="container">
-			<h3 class="tittle-w3layouts text-center my-lg-4 my-4">Contact</h3>
+			<h3 class="tittle-w3layouts text-center my-lg-4 my-4">Liên Hệ</h3>
 			<div class="inner_sec">
 				<div class="address row">
 					<div class="col-lg-4 address-grid">
@@ -31,8 +31,8 @@
 								<i class="far fa-map"></i>
 							</div>
 							<div class="col-md-9 address-right text-left">
-								<h6>Address</h6>
-								<p> California, USA</p>
+								<h6>Địa chỉ</h6>
+								<p>92 Quang Trung, Đà Nẵng</p>
 							</div>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 							<div class="col-md-9 address-right text-left">
 								<h6>Email</h6>
 								<p>Email :
-									<a href="mailto:example@email.com"> mail@example.com</a>
+									<a href="mailto:banhstore@gmail.com">banhstore@gmail.com</a>
 
 								</p>
 							</div>
@@ -57,8 +57,8 @@
 								<i class="fas fa-mobile-alt"></i>
 							</div>
 							<div class="col-md-9 address-right text-left">
-								<h6>Phone</h6>
-								<p>+1 234 567 8901</p>
+								<h6>Số điện thoại</h6>
+								<p>12345678099</p>
 
 							</div>
 
@@ -68,8 +68,4 @@
 			</div>
 		</div>
 	</section>
-	<div class="contact-map">
-		<iframe src="https://www.google.com/maps/place/Da+Nang,+Vietnam/@16.0717635,107.9380394,11z/data=!3m1!4b1!4m5!3m4!1s0x314219c792252a13:0x1df0cb4b86727e06!8m2!3d16.0544563!4d108.0717219?hl=en-US"
-		    class="map" style="border:0" allowfullscreen=""></iframe>
-	</div>
 @endsection

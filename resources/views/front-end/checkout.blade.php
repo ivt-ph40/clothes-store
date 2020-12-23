@@ -66,7 +66,6 @@
 									</div>
 								</td>
 								<td class="invert">{{$cart->name}} ({{$cart->options->size}})</td>
-
 								<td class="invert">{{ number_format($cart->qty * $cart->price, 0, "", ".")}} VNĐ</td>
 								<td class="invert">
 									<div class="rem">
@@ -123,6 +122,7 @@
 						<h4>Thông tin nhận hàng</h4>
 						<form action="{{route('checkout-post')}}" method="post" class="creditly-card-form agileinfo_form">
 							@csrf
+							@if(\Auth::check())
 							<section class="creditly-wrapper wrapper">
 								<div class="information-wrapper">
 									<div class="first-row form-group">
@@ -176,6 +176,7 @@
 									<button class="submit check_out">Giao hàng đến địa chỉ này</button>
 								</div>
 							</section>
+							@endif
 						</form>
 					</div>
 					<div class="clearfix"> </div>

@@ -123,6 +123,14 @@ h1.logo-w3layouts a.navbar-brand {
     background: none !important;
 }
 
+.carousel-item.item1 {
+    background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/slide/9-slider_2.jpg) no-repeat;
+    background: -moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/slide/1-slider_4.jpg) no-repeat;
+    background: -ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/slide/4-slider_3.jpg) no-repeat;
+    background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/slide/1-slider_3.jpg) no-repeat;
+    background-size: cover;
+}
+
 .navbar-light .navbar-nav .nav-link,
 .dropdown-item {
     color: #828284;

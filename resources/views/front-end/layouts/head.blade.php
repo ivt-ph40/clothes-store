@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="{{asset('web/css/owl.carousel.css')}}" type="text/css" media="all">
 	<link rel="stylesheet" href="{{asset('web/css/owl.theme.css')}}" type="text/css" media="all">
 	<link href="{{asset('web/css/easy-responsive-tabs.css')}}" rel='stylesheet' type='text/css' />
+	<link href="{{asset('web/css/contact.css')}}" rel='stylesheet' type='text/css' />
 	<link href="{{asset('web/css/style.css')}}" rel='stylesheet' type='text/css' />
 	<link href="{{asset('web/css/checkout.css')}}" rel='stylesheet' type='text/css' />
 	<link href="{{asset('web/css/toastr.min.css')}}" rel='stylesheet' type='text/css' />
