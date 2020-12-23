@@ -19,7 +19,7 @@
 					<ul class="cart-inner-info">
 						<li class="button-log">
 							@if(\Auth::check())
-							<a href="">Xin chào {!! '<b>'.\Auth::user()->name.'</b>'!!}</a>
+							<a href="{{route('order.detail', \Auth::user()->id)}}">Xin chào {!! '<b>'.\Auth::user()->name.'</b>'!!}</a>
 							@else
 							<a class="btn-open" href="#">
 								<span class="fa fa-user" aria-hidden="true"></span>

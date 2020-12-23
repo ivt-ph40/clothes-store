@@ -64,5 +64,6 @@ Route::get('/account', 'UserController@index')->name('account');
 Route::get('/checkout', 'CartController@index')->name('checkout');
 Route::post('/checkout', 'CartController@checkout')->name('checkout-post');
 Route::get('/checkout-success', 'CartController@checkoutSuccess')->name('checkoutSuccess');
+Route::get('/thong-tin-don-hang/{usser_id}', 'OrderController@index')->name('order.detail');
 
 // Route::get('/home', 'HomeController@index')->name('home');
