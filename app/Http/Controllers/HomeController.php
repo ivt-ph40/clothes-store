@@ -33,6 +33,7 @@ class HomeController extends Controller
         $categories = Category::where('parent_id' , 0)->get();
         $cateChild = Category::where('parent_id', '!=', 0)->get();
         $products = Product::latest()->take(8)->get();
-        return view('front-end.home', compact('categories', 'cateChild', 'products'));
+        $trending = Product::where('trending', 1)->take(8)->get();
+        return view('front-end.home', compact('categories', 'cateChild', 'products', 'trending'));
     }
 }

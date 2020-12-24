@@ -26,7 +26,6 @@
 								<span class="fa fa-user" aria-hidden="true"></span>
 							</a>
 							@endif
-							
 						</li>
 						<li class="galssescart galssescart2 cart cart box_1">
 							<form action="{{route('checkout')}}" method="get" class="last">
@@ -86,15 +85,17 @@
 					<button type="button" class="overlay-close">
 						<i class="fa fa-times" aria-hidden="true"></i>
 					</button>
-					<form action="{{route('search')}}" method="post" class="d-flex">
+					<form action="{{route('search')}}" method="post" class="d-flex" autocomplete="off">
 						@csrf
-						<input class="form-control" type="search" placeholder="Nhập từ khóa..." required="" name="search">
+						<input class="form-control" type="search" id="search" placeholder="Nhập từ khóa..." required="" name="search">
+						<div id="search-ajax" ></div>
 						<button type="submit" class="btn btn-primary submit">
 							<i class="fas fa-search"></i>
 						</button>
+						
 					</form>
-
 				</div>
+				
 				<!-- open/close -->
 			</div>
 			<label class="top-log mx-auto"></label>

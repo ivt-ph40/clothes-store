@@ -29,7 +29,7 @@
 								<h3 class="agileits-sear-head">Tìm kiếm</h3>
 								<form action="{{route('search')}}" method="post">
 									@csrf
-										<input class="form-control" type="search" name="search" placeholder="Nhập từ khóa..." required="">
+										<input class="form-control" type="search" id="search" name="search" placeholder="Nhập từ khóa..." required="">
 										<button class="btn1">
 												<i class="fas fa-search"></i>
 										</button>
@@ -119,17 +119,17 @@
 						<h3 class="tittle-w3layouts text-left my-lg-4 my-3">Sản phẩm nổi bật</h3>
 						<div class="mid-slider">
 							<div class="owl-carousel owl-theme row">
-								@foreach($enabled as $ena)
+								@foreach($trending as $trending)
 								<div class="item">
 									<div class="gd-box-info text-center">
 										<div class="product-men women_two bot-gd">
 											<div class="product-googles-info slide-img googles">
 												<div class="men-pro-item">
 													<div class="men-thumb-item">
-														<img src="{{asset($ena->productImage->path)}}" class="img-fluid" alt="">
+														<img src="{{asset($trending->productImage->path)}}" class="img-fluid" alt="">
 														<div class="men-cart-pro">
 															<div class="inner-men-cart-pro">
-																<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Quick View</a>
+																<a href="{{route('detail', $trending->id)}}" class="link-product-add-cart">Xem chi tiết</a>
 															</div>
 														</div>
 														<span class="product-new-top">New</span>
@@ -139,10 +139,10 @@
 															<div class="grid_meta">
 																<div class="product_price">
 																	<h4>
-																		<a href="single.html">{{$ena->name}}</a>
+																		<a href="single.html">{{$trending->name}}</a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">{{number_format("$ena->price",0,"",".")}} VNĐ</span>
+																		<span class="money ">{{number_format("$trending->price",0,"",".")}} VNĐ</span>
 																	</div>
 																</div>
 															</div>
@@ -151,7 +151,7 @@
 																	<input type="hidden" name="add" value="1">
 																	<input type="hidden" name="googles_item" value="Fastrack Aviator">
 																	<input type="hidden" name="amount" value="325.00">
-																	<button type="submit" data-id="{{$ena->id}}" class="googles-cart pgoogles-cart btn-add-to-cart">
+																	<button type="submit" data-id="{{$trending->id}}" class="googles-cart pgoogles-cart btn-add-to-cart">
 																		<i class="fas fa-cart-plus"></i>
 																	</button>
 															</div>
