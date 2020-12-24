@@ -47,7 +47,7 @@ class HomeController extends Controller
         $data = $request->get('query');
         if($data){
             $products = Product::with('productImage')->where('name', 'like', '%'.$data.'%')->get();
-            $output = '<ul class="dropdown-menu" style="display:block; position:absolute; width:735px">';
+            $output = '<ul class="style="display:block;position:absolute;width: 482px;top: 120px;left: 14px;z-index:999">';
             foreach($products as $product){
                 $output .= '<li class="search-product-list pt-1 pb-1 pl-3">'.$product->name.'</li>';
             }

@@ -27,13 +27,14 @@
 						<div class="side-bar col-lg-3">
 							<div class="search-hotel">
 								<h3 class="agileits-sear-head">Tìm kiếm</h3>
-								<form action="{{route('search')}}" method="post">
+								<form action="{{route('search')}}" method="post" autocomplete="off">
 									@csrf
-										<input class="form-control" type="search" id="search" name="search" placeholder="Nhập từ khóa..." required="">
+										<input class="form-control" type="search" id="mini-search" name="search" placeholder="Nhập từ khóa..." required="">
 										<button class="btn1">
 												<i class="fas fa-search"></i>
 										</button>
 										<div class="clearfix"> </div>
+										<div class="" id="mini-search-ajax"> </div>
 									</form>
 							</div>
 							<!-- deals -->

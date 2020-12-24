@@ -292,3 +292,25 @@
 			$('#search-ajax').fadeOut();
 		});
 	</script>
+	<script>
+		$('#mini-search').keyup(function(){
+			var query =$(this).val();
+			if (query != '') {
+				var _token = $('input[name="_token"]').val();
+				// alert(_token);
+				$.ajax({
+					url:"{{route('autocomplete-ajax')}}",
+					method:"post",
+					data: {query:query, _token:_token},
+					success: function(data){
+						$('#mini-search-ajax').fadeIn();
+						$('#mini-search-ajax').html(data);
+					}
+				});
+			}
+		});
+		$(document).on('click', '.search-product-list', function(){
+			$('#mini-search').val($(this).text());
+			$('#mini-search-ajax').fadeOut();
+		});
+	</script>

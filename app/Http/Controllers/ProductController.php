@@ -96,7 +96,7 @@ class ProductController extends Controller
         $trending = Product::where('trending', 1)->take(8)->get();
         $productmin = Product::where('price' , '<', '200000')->take(5)->get();
         // dd($products);
-        return view('front-end.shop', compact('categories', 'cateChild', 'products',  'catename', 'enabled', 'productmin', 'trending'));
+        return view('front-end.shop', compact('categories', 'cateChild', 'products',  'catename', 'productmin', 'trending'));
     }
 
     public function productDetail($id)
