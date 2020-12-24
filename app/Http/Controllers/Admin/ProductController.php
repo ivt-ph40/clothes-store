@@ -50,10 +50,16 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->all();
+        // dd($data);
+        if (!$request->has('trending')){
+            $data['trending'] = 0;
+        }
+        // dd($data);
         if ($request->hasFile('images')){
             $name = rand(1,9999) . '-' .$request->file('images')->getClientOriginalName(); //Thiết lập tên cho ảnh
             $request->file('images')->move(public_path('/images'), $name); //Lưu ảnh với tên vừa tạo vào thư mục /img
             $product_images['path'] = '/images/'.$name;                   //Tạo đường dẫn ảnh vào để lưu vào DB
+            // dd($data);
             $productID = Product::create($data)->id;                       //Lưu data vào bảng product và lấy product id
             $product_images['product_id'] = $productID;                    //Gán product id cho product_id ở bảng product_detail
             ProductImage::create($product_images);                         //Lưu data vào bảng product_detail
