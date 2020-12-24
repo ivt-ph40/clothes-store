@@ -65,6 +65,11 @@
                 <p id="" class="invalid-feedback">{{ $errors->first('size_id') }}</p>
                 @endif
             </div>
+            
+            <div class="form-group">
+                <label class="form-checkbox-label" for="">Sản phẩm nổi bật</label>
+                <input class="form-checkbox-input" type="checkbox" name="trending" id="" value="1">
+            </div>
             {{-- Product Images  --}}
             <div class="form-group">
                 <label for="">Ảnh <i style="color:red">*</i></label>
