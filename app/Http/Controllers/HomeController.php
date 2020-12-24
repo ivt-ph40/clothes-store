@@ -36,4 +36,23 @@ class HomeController extends Controller
         $trending = Product::where('trending', 1)->take(8)->get();
         return view('front-end.home', compact('categories', 'cateChild', 'products', 'trending'));
     }
+    public function search(Request $request){
+        $search = $request->search;
+        $result = Product::with('category')->where('name', 'like', '%'.$search.'%')->orWhereHas('category', function($query) use($search){
+            return $query->where('name', 'like', '%'.$search.'%');
+        })->paginate(10);
+        return view('back-end.search', compact('result', 'search'));
+    }
+    public function autocompleteAjax(Request $request){
+        $data = $request->get('query');
+        if($data){
+            $products = Product::with('productImage')->where('name', 'like', '%'.$data.'%')->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:absolute; width:735px">';
+            foreach($products as $product){
+                $output .= '<li class="search-product-list pt-1 pb-1 pl-3">'.$product->name.'</li>';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
 }

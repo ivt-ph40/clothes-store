@@ -11,6 +11,8 @@
 |
 */
 
+
+// Login - Logout - Register 
 Route::get('/', 'HomeController@index')->name('trang-chu');
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('form-login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
@@ -46,7 +48,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin
     });
 });
 
-
+ 
 Route::get('/san-pham', 'ProductController@index')->name('san-pham');
 Route::get('/san-pham/{id}', 'ProductController@showProductWithCate')->name('xem-san-pham');
 Route::get('/dang-nhap', 'LoginController@create')->name('dang-nhap');
@@ -64,7 +66,8 @@ Route::get('/account', 'UserController@index')->name('account');
 Route::get('/checkout', 'CartController@index')->name('checkout');
 Route::post('/checkout', 'CartController@checkout')->name('checkout-post');
 Route::get('/checkout-success', 'CartController@checkoutSuccess')->name('checkoutSuccess');
-
 Route::get('/thong-tin-don-hang/{user_id}', 'OrderController@index')->name('order.detail');
+// Route::get('search', 'HomeController@search')->name('search'); //search 
+Route::post('autocomplete-ajax', 'HomeController@autocompleteAjax')->name('autocomplete-ajax');
 
 

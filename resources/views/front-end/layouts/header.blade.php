@@ -92,7 +92,6 @@
 						<button type="submit" class="btn btn-primary submit">
 							<i class="fas fa-search"></i>
 						</button>
-						
 					</form>
 				</div>
 				

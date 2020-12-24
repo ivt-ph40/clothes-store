@@ -271,24 +271,24 @@
 	</script>
 
 	<script>
-$('#search').keyup(function(){
-  var query =$(this).val();
-  if (query != '') {
-    var _token = $('input[name="_token"]').val();
-    // alert(_token);
-    $.ajax({
-      url:"{{route('autocomplete-ajax')}}",
-      method:"post",
-      data: {query:query, _token:_token},
-      success: function(data){
-        $('#search-ajax').fadeIn();
-        $('#search-ajax').html(data);
-      }
-    });
-  }
-});
-$(document).on('click', '.search-product-list', function(){
-  $('#search').val($(this).text());
-  $('#search-ajax').fadeOut();
-});
-</script>
+		$('#search').keyup(function(){
+			var query =$(this).val();
+			if (query != '') {
+				var _token = $('input[name="_token"]').val();
+				// alert(_token);
+				$.ajax({
+					url:"{{route('autocomplete-ajax')}}",
+					method:"post",
+					data: {query:query, _token:_token},
+					success: function(data){
+						$('#search-ajax').fadeIn();
+						$('#search-ajax').html(data);
+					}
+				});
+			}
+		});
+		$(document).on('click', '.search-product-list', function(){
+			$('#search').val($(this).text());
+			$('#search-ajax').fadeOut();
+		});
+	</script>
