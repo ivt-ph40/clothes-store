@@ -6,8 +6,6 @@ use App\Order;
 use App\Category;
 use App\OrderStatus;
 use Illuminate\Http\Request;
-use App\Category;
-use App\OrderStatus;
 
 class OrderController extends Controller
 {

@@ -62,17 +62,17 @@
 					<!--//banner-sec-->
 					<div class="mid-slider">
 						<div class="owl-carousel owl-theme row">
-							@foreach($products as $product)
+							@foreach($trending as $trending)
 							<div class="item">
 								<div class="gd-box-info text-center">
 									<div class="product-men women_two bot-gd">
 										<div class="product-googles-info slide-img googles">
 											<div class="men-pro-item">
 												<div class="men-thumb-item">
-													<img src="{{asset($product->productImage->path)}}" class="img-fluid" alt="">
+													<img src="{{asset($trending->productImage->path)}}" class="img-fluid" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Xem chi tiết</a>
+															<a href="{{route('detail', $trending->id)}}" class="link-product-add-cart">Xem chi tiết</a>
 														</div>
 													</div>
 													<span class="product-new-top">New</span>
@@ -83,10 +83,10 @@
 														<div class="grid_meta">
 															<div class="product_price">
 																<h4>
-																	<a href="{{route('detail', $product->id)}}">{{$product->name}}</a>
+																	<a href="{{route('detail', $trending->id)}}">{{$trending->name}}</a>
 																</h4>
 																<div class="grid-price mt-2">
-																	<span class="money ">{{number_format("$product->price",0,"",".")}} VNĐ</span>
+																	<span class="money ">{{number_format("$trending->price",0,"",".")}} VNĐ</span>
 																</div>
 															</div>
 														</div>
