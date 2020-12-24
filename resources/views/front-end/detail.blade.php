@@ -77,7 +77,7 @@
 										<ul class="resp-tabs-list">
 											<li>Mô tả</li>
 											<li>Chi tiết sản phẩm</li>
-											<li>Review</li>
+											<li>Bình luận</li>
 										</ul>
 										<div class="resp-tabs-container">
 											<!--/tab_one-->

@@ -5,34 +5,10 @@
 @endsection
 
 @section('content')
-	<div class="banner">
-			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-					<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-				</ol>
-				<div class="carousel-inner" role="listbox">
-					<div class="carousel-item active">
-						<div class="carousel-caption text-center">
-							<h3>Men’s clothes
-								<span>Sale 50% off</span>
-							</h3>
-							<a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-						</div>
-					</div>
-				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-			<!--//banner -->
-		</div>
+	<div>
+		<img src="{{asset('images/slide/2-slider_2.JPG')}}" style="height: 716px;" alt="">
+	</div>
+
 
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
 		<div class="container-fluid">
@@ -47,7 +23,7 @@
 									<img src="{{asset($product->productImage->path)}}" class="img-fluid" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Quick View</a>
+											<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">xem chi tiết</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -96,7 +72,7 @@
 													<img src="{{asset($product->productImage->path)}}" class="img-fluid" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Quick View</a>
+															<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Xem chi tiết</a>
 														</div>
 													</div>
 													<span class="product-new-top">New</span>

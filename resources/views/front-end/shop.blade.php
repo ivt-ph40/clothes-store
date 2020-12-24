@@ -38,7 +38,7 @@
 							</div>
 							<!-- deals -->
 							<div class="deal-leftmk left-side">
-								<h3 class="agileits-sear-head">Ưu đãi đặc biệt</h3>
+								<h3 class="agileits-sear-head">Hàng đẹp giá rẻ</h3>
 								@foreach($productmin as $min)
 								<div class="special-sec1">
 									<div class="img-deals">
@@ -46,7 +46,7 @@
 									</div>
 									<div class="img-deal1">
 										<h3><a href="{{route('detail', $min->id)}}">{{$min->name}}</a></h3>
-										<a href="{{route('detail', $min->id)}}">{{$min->price}}</a>
+										<a href="{{route('detail', $min->id)}}">{{number_format("$min->price",0,"",".")}} VNĐ</a>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -75,7 +75,7 @@
 													<img src="{{asset($product->productImage->path)}}" class="img-fluid" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Quick View</a>
+															<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Xem chi tiết</a>
 														</div>
 													</div>
 													<span class="product-new-top">New</span>
@@ -142,7 +142,7 @@
 																		<a href="single.html">{{$ena->name}}</a>
 																	</h4>
 																	<div class="grid-price mt-2">
-																		<span class="money ">{{number_format("$ena->price",0,"",".")}} VNĐ0</span>
+																		<span class="money ">{{number_format("$ena->price",0,"",".")}} VNĐ</span>
 																	</div>
 																</div>
 															</div>

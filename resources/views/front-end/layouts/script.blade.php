@@ -15,21 +15,7 @@
 	<script src="{{asset('web/js/demo1-search.js')}}"></script>
 	<!--//search jQuery-->
 	<!-- cart-js -->
-	<script src="{{asset('web/js/minicart.js')}}"></script>
-	<script>
-		googles.render();
-
-		googles.cart.on('googles_checkout', function (evt) {
-			var items, len, i;
-
-			if (this.subtotal() > 0) {
-				items = this.items();
-
-				for (i = 0, len = items.length; i < len; i++) {}
-			}
-		});
-	</script>
-	<!-- //cart-js -->
+	
 	<script>
 		$(document).ready(function () {
 			$(".button-log a").click(function () {
@@ -44,17 +30,7 @@
 		});
 	</script>
 	<!-- carousel -->
-	<!-- Count-down -->
-	<link href="{{asset('web/css/simplyCountdown.css')}}" rel='stylesheet' type='text/css' />
-	<script>
-		var d = new Date();
-		simplyCountdown('simply-countdown-custom', {
-			year: d.getFullYear(),
-			month: d.getMonth() + 2,
-			day: 25
-		});
-	</script>
-	<!--// Count-down -->
+	
 	<script src="{{asset('web/js/owl.carousel.js')}}"></script>
 	<script>
 		$(document).ready(function () {

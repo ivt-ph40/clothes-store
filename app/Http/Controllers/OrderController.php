@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use App\Category;
+use App\OrderStatus;
 
 class OrderController extends Controller
 {
@@ -12,9 +14,20 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        $categories = Category::where('parent_id' , 0)->get();
+        $cateChild = Category::where('parent_id', '!=', 0)->get();
+        $orders = Order::with('orderDetail')->where('user_id', $user_id)->get();
+        $order_status = OrderStatus::all();
+        $total = 0;
+        foreach($orders as $order){
+            foreach($order->orderDetail as $order_detail)
+            {
+                $total += $order_detail->price;
+            }
+        }
+        return view('front-end.order-detail', compact('orders', 'categories', 'cateChild', 'order_status', 'total'));
     }
 
     /**
