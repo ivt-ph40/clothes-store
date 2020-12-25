@@ -30,7 +30,7 @@
 								<form action="{{route('search')}}" method="post" autocomplete="off">
 									@csrf
 										<input class="form-control" type="search" id="mini-search" name="search" placeholder="Nhập từ khóa..." required="">
-										<button class="btn1">
+										<button class="btn1" style="height: 43px;">
 												<i class="fas fa-search"></i>
 										</button>
 										<div class="clearfix"> </div>
@@ -69,7 +69,7 @@
 								<div class="row">
 									<!-- /womens -->
 									@foreach($products as $product)
-									<div class="col-md-3 product-men women_two shop-gd">
+									<div class="col-md-3 product-men women_two shop-gd" style="padding: 14px;">
 										<div class="product-googles-info googles">
 											<div class="men-pro-item">
 												<div class="men-thumb-item">

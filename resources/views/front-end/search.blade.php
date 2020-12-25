@@ -36,7 +36,7 @@
 								<div class="row">
 									<!-- /womens -->
 									@foreach($search_products as $product)
-									<div class="col-md-3 product-men women_two shop-gd">
+									<div class="col-md-3 product-men women_two shop-gd" style="padding: 8px;">
 										<div class="product-googles-info googles">
 											<div class="men-pro-item">
 												<div class="men-thumb-item">
