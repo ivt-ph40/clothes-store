@@ -122,20 +122,27 @@
 						<h4>Thông tin nhận hàng</h4>
 						<form action="{{route('checkout-post')}}" method="post" class="creditly-card-form agileinfo_form">
 							@csrf
-							@if(\Auth::check())
 							<section class="creditly-wrapper wrapper">
 								<div class="information-wrapper">
 									<div class="first-row form-group">
 										<div class="controls">
 											<label class="control-label">Họ và tên</label>
+											@if(\Auth::check())
 											<input class="billing-address-name form-control" type="text" name="name" placeholder="Vui lòng nhập họ và tên" value="{{\Auth::user()->name}}">
+											@else
+											<input class="billing-address-name form-control" type="text" name="name" placeholder="Vui lòng nhập họ và tên" value="">
+											@endif
 											@if ($errors->has('name'))
 												<span class="red">{{$errors->first('name')}}</span>
 											@endif
 										</div>
 										<div class="controls">
 											<label class="control-label">Email</label>
+											@if(\Auth::check())
 											<input class="billing-address-name form-control" type="text" name="email" placeholder="Vui lòng nhập họ và tên" value="{{\Auth::user()->email}}">
+											@else
+											<input class="billing-address-name form-control" type="text" name="email" placeholder="Vui lòng nhập họ và tên" value="">
+											@endif
 											@if ($errors->has('email'))
 												<span class="red">{{$errors->first('email')}}</span>
 											@endif
@@ -144,7 +151,11 @@
 											<div class="card_number_grid_left">
 												<div class="controls">
 													<label class="control-label">Số điện thoại</label>
+													@if(\Auth::check())
 													<input class="form-control" name="phone" type="text" placeholder="Vui lòng nhập số điện thoại" value="{{\Auth::user()->phone}}">
+													@else
+													<input class="form-control" name="phone" type="text" placeholder="Vui lòng nhập số điện thoại" value="">
+													@endif
 													@if ($errors->has('phone'))
 														<span class="red">{{$errors->first('phone')}}</span>
 													@endif
@@ -153,7 +164,11 @@
 											<div class="card_number_grid_right">
 												<div class="controls">
 													<label class="control-label">Địa chỉ </label>
-													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="{{\Auth::user()->address->first()->address1}}">
+													@if(\Auth::check())
+													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="{{\Auth::user()->address->address1}}">
+													@else
+													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="">
+													@endif
 													@if ($errors->has('address'))
 														<span class="red">{{$errors->first('address')}}</span>
 													@endif
@@ -176,7 +191,7 @@
 									<button class="submit check_out">Giao hàng đến địa chỉ này</button>
 								</div>
 							</section>
-							@endif
+							
 						</form>
 					</div>
 					<div class="clearfix"> </div>
