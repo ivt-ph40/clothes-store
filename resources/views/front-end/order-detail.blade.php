@@ -52,7 +52,7 @@
                                     @endif
                                     @endforeach
                                 </td>
-								<td class="invert">{{$total}}</td>
+								<td class="invert">{{number_format("$total",0,"",".")}} VNĐ</td>
 							</tr>
                             @endforeach
 							
@@ -68,9 +68,10 @@
                         <li>Tên tài khoản: {{\Auth::user()->name}}</li>
                         <li>Số điện thoại: {{\Auth::user()->phone}}</li>
                         <li>Email: {{\Auth::user()->email}}</li>
+                        <li>Địa chỉ: {{\Auth::user()->address->first()->address1}}</li>
                     </ul>
                     <button class="btn btn-outline-dark btn-sm">
-                        Sửa thông tin của tôi
+                        <a href="">Sửa thông tin của tôi</a>
                     </button>
                 </div>
                 

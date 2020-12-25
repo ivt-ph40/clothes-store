@@ -15,21 +15,7 @@
 	<script src="{{asset('web/js/demo1-search.js')}}"></script>
 	<!--//search jQuery-->
 	<!-- cart-js -->
-	<script src="{{asset('web/js/minicart.js')}}"></script>
-	<script>
-		googles.render();
-
-		googles.cart.on('googles_checkout', function (evt) {
-			var items, len, i;
-
-			if (this.subtotal() > 0) {
-				items = this.items();
-
-				for (i = 0, len = items.length; i < len; i++) {}
-			}
-		});
-	</script>
-	<!-- //cart-js -->
+	
 	<script>
 		$(document).ready(function () {
 			$(".button-log a").click(function () {
@@ -44,17 +30,7 @@
 		});
 	</script>
 	<!-- carousel -->
-	<!-- Count-down -->
-	<link href="{{asset('web/css/simplyCountdown.css')}}" rel='stylesheet' type='text/css' />
-	<script>
-		var d = new Date();
-		simplyCountdown('simply-countdown-custom', {
-			year: d.getFullYear(),
-			month: d.getMonth() + 2,
-			day: 25
-		});
-	</script>
-	<!--// Count-down -->
+	
 	<script src="{{asset('web/js/owl.carousel.js')}}"></script>
 	<script>
 		$(document).ready(function () {
@@ -292,4 +268,49 @@
 			});
 		});
 	})	
+	</script>
+
+	<script>
+		$('#search').keyup(function(){
+			var query =$(this).val();
+			if (query != '') {
+				var _token = $('input[name="_token"]').val();
+				// alert(_token);
+				$.ajax({
+					url:"{{route('autocomplete-ajax')}}",
+					method:"post",
+					data: {query:query, _token:_token},
+					success: function(data){
+						$('#search-ajax').fadeIn();
+						$('#search-ajax').html(data);
+					}
+				});
+			}
+		});
+		$(document).on('click', '.search-product-list', function(){
+			$('#search').val($(this).text());
+			$('#search-ajax').fadeOut();
+		});
+	</script>
+	<script>
+		$('#mini-search').keyup(function(){
+			var query =$(this).val();
+			if (query != '') {
+				var _token = $('input[name="_token"]').val();
+				// alert(_token);
+				$.ajax({
+					url:"{{route('autocomplete-ajax')}}",
+					method:"post",
+					data: {query:query, _token:_token},
+					success: function(data){
+						$('#mini-search-ajax').fadeIn();
+						$('#mini-search-ajax').html(data);
+					}
+				});
+			}
+		});
+		$(document).on('click', '.search-product-list', function(){
+			$('#mini-search').val($(this).text());
+			$('#mini-search-ajax').fadeOut();
+		});
 	</script>

@@ -93,10 +93,10 @@ class ProductController extends Controller
         $cateChild = Category::where('parent_id', '!=', 0)->get();
         $products = Product::with('category')->where('category_id', $id)->get();
         $catename = Category::find($id);
-        $enabled = Product::with('category')->where('category_id', $id)->latest()->take(6)->get();
+        $trending = Product::where('trending', 1)->take(8)->get();
         $productmin = Product::where('price' , '<', '200000')->take(5)->get();
         // dd($products);
-        return view('front-end.shop', compact('categories', 'cateChild', 'products',  'catename', 'enabled', 'productmin'));
+        return view('front-end.shop', compact('categories', 'cateChild', 'products',  'catename', 'productmin', 'trending'));
     }
 
     public function productDetail($id)

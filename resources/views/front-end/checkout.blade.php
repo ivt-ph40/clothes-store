@@ -1,7 +1,7 @@
 @extends('front-end.layouts.master')
 
 @section('title')
-    <title>Chi tiết sản phẩm</title>
+    <title>Thanh Toán</title>
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 							<a href="{{route('trang-chu')}}">Trang chủ</a>
 							<i>|</i>
 						</li>
-						<li>Checkout</li>
+						<li>Thanh Toán</li>
 					</ul>
 				</div>
 			</div>
@@ -21,7 +21,7 @@
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
 		<div class="container">
 			<div class="inner-sec-shop px-lg-4 px-3">
-				<h3 class="tittle-w3layouts my-lg-4 mt-3">Checkout </h3>
+				<h3 class="tittle-w3layouts my-lg-4 mt-3">Thanh toán </h3>
 				@if(session('cart-message'))
 				<div class="alert alert-danger" role="alert">
 					{{ session('cart-message') }}
@@ -93,7 +93,6 @@
                      		$total = str_replace( ',' , '.', substr(Cart::subtotal(), 0, strrpos(Cart::subtotal(), '.')));
                 		?>
 							<li>Tổng cộng
-								<i>-</i>
 								<span id="total-cart">{{$total}} VND</span>
 							</li>
 						</ul>	
@@ -126,7 +125,7 @@
 								<div class="information-wrapper">
 									<div class="first-row form-group">
 										<div class="controls">
-											<label class="control-label">Họ và tên</label>
+											<label class="control-label">Họ và tên<i style="color:red">*</i></label>
 											@if(\Auth::check())
 											<input class="billing-address-name form-control" type="text" name="name" placeholder="Vui lòng nhập họ và tên" value="{{\Auth::user()->name}}">
 											@else
@@ -137,12 +136,11 @@
 											@endif
 										</div>
 										<div class="controls">
-											<label class="control-label">Email</label>
+											<label class="control-label">Email<i style="color:red">*</i></label>
 											@if(\Auth::check())
-											<input class="billing-address-name form-control" type="text" name="email" placeholder="Vui lòng nhập họ và tên" value="{{\Auth::user()->email}}">
+											<input class="billing-address-name form-control" type="text" name="email" placeholder="Vui lòng nhập email" value="{{\Auth::user()->email}}">
 											@else
-											<input class="billing-address-name form-control" type="text" name="email" placeholder="Vui lòng nhập họ và tên" value="">
-											@endif
+											<input class="billing-address-name form-control" type="text" name="email" placeholder="Vui lòng nhập email" value="">@endif
 											@if ($errors->has('email'))
 												<span class="red">{{$errors->first('email')}}</span>
 											@endif
@@ -150,12 +148,11 @@
 										<div class="card_number_grids">
 											<div class="card_number_grid_left">
 												<div class="controls">
-													<label class="control-label">Số điện thoại</label>
+													<label class="control-label">Số điện thoại<i style="color:red">*</i></label>
 													@if(\Auth::check())
 													<input class="form-control" name="phone" type="text" placeholder="Vui lòng nhập số điện thoại" value="{{\Auth::user()->phone}}">
 													@else
-													<input class="form-control" name="phone" type="text" placeholder="Vui lòng nhập số điện thoại" value="">
-													@endif
+													<input class="form-control" name="phone" type="text" placeholder="Vui lòng nhập số điện thoại" value="">@endif
 													@if ($errors->has('phone'))
 														<span class="red">{{$errors->first('phone')}}</span>
 													@endif
@@ -163,12 +160,11 @@
 											</div>
 											<div class="card_number_grid_right">
 												<div class="controls">
-													<label class="control-label">Địa chỉ </label>
+													<label class="control-label">Địa chỉ<i style="color:red">*</i> </label>
 													@if(\Auth::check())
-													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="{{\Auth::user()->address->address1}}">
+													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="{{\Auth::user()->address->first()->address1}}">
 													@else
-													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="">
-													@endif
+													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="">@endif
 													@if ($errors->has('address'))
 														<span class="red">{{$errors->first('address')}}</span>
 													@endif
@@ -191,7 +187,6 @@
 									<button class="submit check_out">Giao hàng đến địa chỉ này</button>
 								</div>
 							</section>
-							
 						</form>
 					</div>
 					<div class="clearfix"> </div>

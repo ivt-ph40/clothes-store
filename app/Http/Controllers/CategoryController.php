@@ -47,7 +47,6 @@ class CategoryController extends Controller
     public function show($id)
     {
         $categories = Category::where('parent_id', $id)->get();
-        dd($categories);
     }
 
     /**

@@ -14,7 +14,7 @@ class ChangeTypeColumnAddressIdOnOrderTable extends Migration
     public function up()
     {
           Schema::table('orders', function (Blueprint $table) {
-            $table->string('address_id')->nullable()->change();
+            $table->unsignedBigInteger('address_id')->nullable()->change();
         });
     }
 
@@ -25,6 +25,6 @@ class ChangeTypeColumnAddressIdOnOrderTable extends Migration
      */
     public function down()
     {
-      $table->string('address_id')->change();
+      $table->unsignedBigInteger('address_id')->change();
     }
 }

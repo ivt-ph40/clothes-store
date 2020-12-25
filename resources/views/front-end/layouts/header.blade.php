@@ -1,11 +1,11 @@
 		<header>
 			<div class="row">
 				<div class="col-md-3 top-info text-left mt-lg-4">
-					<h6>Need Help</h6>
+					<h3 style="color: red;">Hot line</h3>
 					<ul>
 						<li>
-							<i class="fas fa-phone"></i> Call</li>
-						<li class="number-phone mt-3">12345678099</li>
+							<i class="fas fa-phone"></i> </li>
+						<li class="number-phone mt-3" style="color: red;">12345678099</li>
 					</ul>
 				</div>
 				<div class="col-md-6 logo-w3layouts text-center">
@@ -19,13 +19,13 @@
 					<ul class="cart-inner-info">
 						<li class="button-log">
 							@if(\Auth::check())
-							<a href="{{route('order.detail', \Auth::user()->id)}}">Xin chào {!! '<b>'.\Auth::user()->name.'</b>'!!}</a>
+							<a href="{{route('order.detail', \Auth()->user()->id)}}">Xin chào {!! '<b>'.\Auth::user()->name.'</b>'!!},</a>
+							<a href="{{route('logout')}}"><b>thoát</b></a>
 							@else
 							<a class="btn-open" href="#">
 								<span class="fa fa-user" aria-hidden="true"></span>
 							</a>
 							@endif
-							
 						</li>
 						<li class="galssescart galssescart2 cart cart box_1">
 							<form action="{{route('checkout')}}" method="get" class="last">
@@ -85,15 +85,17 @@
 					<button type="button" class="overlay-close">
 						<i class="fa fa-times" aria-hidden="true"></i>
 					</button>
-					<form action="{{route('search')}}" method="post" class="d-flex">
+					<form action="{{route('search')}}" method="post" class="d-flex" autocomplete="off">
 						@csrf
-						<input class="form-control" type="search" placeholder="Nhập từ khóa..." required="" name="search">
+						<input class="form-control" type="search" id="search" placeholder="Nhập từ khóa..." required="" name="search">
+						<div id="search-ajax" ></div>
 						<button type="submit" class="btn btn-primary submit">
 							<i class="fas fa-search"></i>
 						</button>
+						
 					</form>
-
 				</div>
+				
 				<!-- open/close -->
 			</div>
 			<label class="top-log mx-auto"></label>
@@ -118,7 +120,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true"
 							    aria-expanded="false">
-								Shop
+								Sản phẩm
 							</a>
 							<ul class="dropdown-menu mega-menu ">
 								<li>
@@ -143,7 +145,7 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{{route('contact')}}">Contact</a>
+							<a class="nav-link" href="{{route('contact')}}">Liên hệ</a>
 						</li>
 					</ul>
 

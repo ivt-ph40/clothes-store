@@ -36,14 +36,14 @@
 								<div class="row">
 									<!-- /womens -->
 									@foreach($search_products as $product)
-									<div class="col-md-3 product-men women_two shop-gd">
+									<div class="col-md-3 product-men women_two shop-gd" style="padding: 8px;">
 										<div class="product-googles-info googles">
 											<div class="men-pro-item">
 												<div class="men-thumb-item">
 													<img src="{{asset($product->productImage->path)}}" class="img-fluid" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Quick View</a>
+															<a href="{{route('detail', $product->id)}}" class="link-product-add-cart">Xem chi tiết</a>
 														</div>
 													</div>
 													<span class="product-new-top">New</span>
