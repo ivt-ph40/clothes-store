@@ -1,3 +1,4 @@
+
 <!--jQuery-->
 	<script src="{{asset('web/js/jquery-2.2.3.min.js')}}"></script>
 	<script src="{{asset('web/js/toastr.min.js')}}"></script>
@@ -277,7 +278,7 @@
 				var _token = $('input[name="_token"]').val();
 				// alert(_token);
 				$.ajax({
-					url:"{{route('autocomplete-ajax')}}",
+					url:"{{route('search-autocomplete-ajax')}}",
 					method:"post",
 					data: {query:query, _token:_token},
 					success: function(data){
@@ -291,6 +292,10 @@
 			$('#search').val($(this).text());
 			$('#search-ajax').fadeOut();
 		});
+
+		$(window).click(function() {
+			$('#search-ajax').fadeOut();
+		});
 	</script>
 	<script>
 		$('#mini-search').keyup(function(){
@@ -299,7 +304,7 @@
 				var _token = $('input[name="_token"]').val();
 				// alert(_token);
 				$.ajax({
-					url:"{{route('autocomplete-ajax')}}",
+					url:"{{route('miniSearch-autocomplete-ajax')}}",
 					method:"post",
 					data: {query:query, _token:_token},
 					success: function(data){
@@ -313,4 +318,10 @@
 			$('#mini-search').val($(this).text());
 			$('#mini-search-ajax').fadeOut();
 		});
+
+		$(window).click(function() {
+			$('#mini-search-ajax').fadeOut();
+		});
+			
+
 	</script>

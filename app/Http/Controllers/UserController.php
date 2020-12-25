@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Address;
 
 class UserController extends Controller
 {
@@ -58,9 +59,13 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($user_id)
     {
-        //
+        $categories = Category::where('parent_id' , 0)->get();
+        $cateChild = Category::where('parent_id', '!=', 0)->get();
+        $user = User::with('address')->find($user_id);
+        // dd($user);
+        return view('front-end.user-edit', compact('categories', 'cateChild', 'user'));
     }
 
     /**
@@ -70,9 +75,14 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $user_id)
     {
-        //
+        $data = $request->only('name', 'email', 'phone');
+        User::find($user_id)->update($data);
+        $address = $request->only('address1');
+        // dd($address);
+        Address::where('user_id', $user_id)->update($address);
+        return redirect()->route('order.detail', $user_id)->with('status', 'Sủa thành công');
     }
 
     /**

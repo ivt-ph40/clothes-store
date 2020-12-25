@@ -45,5 +45,8 @@ $(document).on('click', '.search-product-list', function(){
   $('#search').val($(this).text());
   $('#search-ajax').fadeOut();
 });
+$(window).click(function() {
+			$('#search-ajax').fadeOut();
+		});
 </script>
 @yield('script')

@@ -5,10 +5,12 @@
 @endsection
 
 @section('content')
-	<div>
-		<img src="{{asset('images/slide/2-slider_2.JPG')}}" style="height: 716px;" alt="">
+	@foreach ($slide as $slide)
+	<div class="container">
+		<img class="d-block w-100" src="{{asset($slide->photo_path)}}" alt="First slide">
 	</div>
-
+			
+	@endforeach
 
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
 		<div class="container-fluid">
