@@ -50,7 +50,7 @@
                                     <div class="first-row form-group">
 										<div class="controls">
 											<label class="control-label">Địa chỉ<i style="color:red">*</i></label>
-											<input class="billing-address-name form-control" type="text" name="address1" placeholder="Vui lòng nhập địa chỉ" value="{{$user->address->address1}}">
+											<input class="billing-address-name form-control" type="text" name="address1" placeholder="Vui lòng nhập địa chỉ" value="">
 										</div>
 									</div>
                                     <button class="submit check_out">Sửa thông tin</button>

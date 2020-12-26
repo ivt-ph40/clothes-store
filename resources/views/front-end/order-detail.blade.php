@@ -68,7 +68,13 @@
                         <li>Tên tài khoản: {{\Auth::user()->name}}</li>
                         <li>Số điện thoại: {{\Auth::user()->phone}}</li>
                         <li>Email: {{\Auth::user()->email}}</li>
-                        <li>Địa chỉ: {{\Auth::user()->address->address1}}</li>
+                        <li>Địa chỉ: @php
+							if (\Auth::user()->address == null) {
+								
+							} else {
+								echo \Auth::user()->address->address1;
+							}
+							@endphp</li>
                     </ul>
 					<a href="{{route('user.edit', \Auth::user()->id)}}" class="btn btn-outline-dark btn-sm">Sửa thông tin của tôi</a>
                 </div>
