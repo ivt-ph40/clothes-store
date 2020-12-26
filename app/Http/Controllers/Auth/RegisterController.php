@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Address;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -80,6 +81,8 @@ class RegisterController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
         $user_id = User::create($data)->id;
+        $address['user_id'] = $user_id;
+        Address::create($address);
         $user = User::find($user_id)->role()->attach(2);
         \Auth::login(User::find($user_id));
         return redirect()->route('dashboard');

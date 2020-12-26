@@ -80,7 +80,6 @@ class UserController extends Controller
         $data = $request->only('name', 'email', 'phone');
         User::find($user_id)->update($data);
         $address = $request->only('address1');
-        // dd($address);
         Address::where('user_id', $user_id)->update($address);
         return redirect()->route('order.detail', $user_id)->with('status', 'Sủa thành công');
     }
