@@ -27,6 +27,7 @@ class OrderController extends Controller
                 $total += $order_detail->price;
             }
         }
+        
         return view('front-end.order-detail', compact('orders', 'categories', 'cateChild', 'order_status', 'total'));
     }
 
