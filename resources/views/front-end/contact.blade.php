@@ -1,25 +1,15 @@
 @extends('front-end.layouts.master')
 
 @section('title')
-	<title>Contact</title>
+	<title>Liên hệ</title>
+@endsection
+
+@section('a')
+	Liên hệ
 @endsection
 
 @section('content')
-	<div class="banner-top container-fluid" id="home">
-		<div class="banner_inner">
-			<div class="services-breadcrumb">
-				<div class="inner_breadcrumb">
-					<ul class="short">
-						<li>
-							<a href="{{route('trang-chu')}}">Trang chủ</a>
-							<i>|</i>
-						</li>
-						<li>Liên hệ</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+	@include('front-end.layouts.banner')
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
 		<div class="container">
 			<h3 class="tittle-w3layouts text-center my-lg-4 my-4">Liên Hệ</h3>

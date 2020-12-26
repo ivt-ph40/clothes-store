@@ -17,16 +17,17 @@
 
 				<div class="col-md-3 top-info-cart text-right mt-lg-4">
 					<ul class="cart-inner-info">
-						<li class="button-log">
 							@if(\Auth::check())
-							<a href="{{route('order.detail', \Auth()->user()->id)}}">Xin chào {!! '<b>'.\Auth::user()->name.'</b>'!!},</a>
-							<a href="{{route('logout')}}"><b>thoát</b></a>
+							<a class="text-dark" href="{{route('order.detail', \Auth()->user()->id)}}">Xin chào {!! '<b>'.\Auth::user()->name.'</b>'!!},</a>
+							<a class="text-dark" href="{{route('logout')}}"><b>thoát</b></a>
 							@else
+							<li class="button-log">
 							<a class="btn-open" href="#">
 								<span class="fa fa-user" aria-hidden="true"></span>
 							</a>
+							</li>
 							@endif
-						</li>
+						
 						<li class="galssescart galssescart2 cart cart box_1">
 							<form action="{{route('checkout')}}" method="get" class="last">
 								<input type="hidden" name="cmd" value="_cart">
@@ -57,15 +58,11 @@
 										<label class="mb-2">Mật khẩu</label>
 										<input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
 									</div>
-									<div class="form-check mb-2">
-										<input type="checkbox" class="form-check-input" id="exampleCheck1">
-										<label class="form-check-label" for="exampleCheck1">Check me out</label>
-									</div>
-									<div>
-										<a href="{{route('register')}}">Đăng ký</a>
-									</div>
 									<button type="submit" class="btn btn-primary submit mb-4">Đăng Nhập</button>
-
+									<div class="d-flex">
+										<p>Đăng ký nếu chưa có tài khoản&nbsp;</p>
+										<a style="padding-top: 2px; font-weight: bold;" href="{{route('register')}}">Đăng ký</a>
+									</div>
 								</form>
 							</div>
 							<!---->

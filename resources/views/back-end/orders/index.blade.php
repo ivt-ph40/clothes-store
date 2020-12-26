@@ -117,7 +117,9 @@
         @endforeach
     </tbody>
 </table>
+{{ $orders->links() }}
 @endsection
+
 @section('script')
     <script>
     $('.alert').delay(2000).fadeOut(500).queue(function (next) { 

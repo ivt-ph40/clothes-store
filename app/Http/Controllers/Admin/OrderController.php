@@ -17,7 +17,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('orderStatus')->where('order_status_id', '<=', 5)->orderBy('order_status_id', 'asc')->get();
+        $orders = Order::with('orderStatus')->where('order_status_id', '<=', 5)->orderBy('order_status_id', 'asc')->paginate(10);
         $orderStatus = OrderStatus::all();
         // dd($orders);
         return view('back-end.orders.index', compact('orders', 'orderStatus'));

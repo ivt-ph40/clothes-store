@@ -60,7 +60,7 @@
 				</div>
 				<div class="col-lg-4 footer-grid-w3ls">
 					<div class="footer-title">
-						<h3>Quick Links</h3>
+						<h3>Liên kết nhanh</h3>
 					</div>
 					<ul class="links">
 						<li>
@@ -70,17 +70,17 @@
 							<a href="{{route('gioi-thieu')}}">Giới thiệu</a>
 						</li>
 						<li>
-							<a href="{{route('san-pham')}}">Shop</a>
+							<a href="{{route('san-pham')}}">Sản Phẩm</a>
 						</li>
 						<li>
-							<a href="{{route('contact')}}">Contact Us</a>
+							<a href="{{route('contact')}}">Liên hệ</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div class="copyright-w3layouts mt-4">
-				<p class="copy-right text-center ">&copy; 2018 Goggles. All Rights Reserved | Design by
-					<a href="http://w3layouts.com/"> W3layouts </a>
+				<p class="copy-right text-center ">&copy; 2020 Bảnh Store
+					<a href="http://w3layouts.com/"> Thịnh Tiến </a>
 				</p>
 			</div>
 		</div>

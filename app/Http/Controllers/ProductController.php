@@ -113,12 +113,9 @@ class ProductController extends Controller
     {
         $data = $request->search;
         $search_products = Product::where('name', 'like', '%'.$data.'%')->get();
+        // dd($search_products);
         $categories = Category::where('parent_id' , 0)->get();
         $cateChild = Category::where('parent_id', '!=', 0)->get();
-        // $products = Product::with('category')->where('category_id', $id)->get();
-        // $catename = Category::find($id);
-        // $enabled = Product::with('category')->where('category_id', $id)->latest()->take(6)->get();
-        // $productmin = Product::where('price' , '<', '200000')->take(5)->get();
         return view('front-end.search', compact('data', 'categories', 'cateChild', 'search_products'));
     }
 }

@@ -4,20 +4,12 @@
     <title>Trang khách hàng</title>
 @endsection
 
+@section('a')
+	Trang khách hàng
+@endsection
+
 @section('content')
-	<div class="banner_inner">
-			<div class="services-breadcrumb">
-				<div class="inner_breadcrumb">
-					<ul class="short">
-						<li>
-							<a href="{{route('trang-chu')}}">Trang chủ</a>
-							<i>|</i>
-						</li>
-						<li>Checkout</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+	@include('front-end.layouts.banner')
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
 		<div class="container d-flex">
 			<div class="inner-sec-shop px-lg-4 px-3 col-lg-8">
