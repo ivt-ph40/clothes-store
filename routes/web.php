@@ -67,7 +67,10 @@ Route::get('/checkout', 'CartController@index')->name('checkout');
 Route::post('/checkout', 'CartController@checkout')->name('checkout-post');
 Route::get('/checkout-success', 'CartController@checkoutSuccess')->name('checkoutSuccess');
 Route::get('/thong-tin-don-hang/{user_id}', 'OrderController@index')->name('order.detail');
+Route::get('/sua-thong-tin/{user_id}', 'Usercontroller@edit')->name('user.edit');
+Route::put('/sua-thong-tin/{user_id}', 'Usercontroller@update')->name('user.update');
 // Route::get('search', 'HomeController@search')->name('search'); //search 
-Route::post('autocomplete-ajax', 'HomeController@autocompleteAjax')->name('autocomplete-ajax');
+Route::post('miniSearch-autocomplete-ajax', 'HomeController@miniSearchAutocompleteAjax')->name('miniSearch-autocomplete-ajax');
+Route::post('search-autocomplete-ajax', 'HomeController@searchAutocompleteAjax')->name('search-autocomplete-ajax');
 
 

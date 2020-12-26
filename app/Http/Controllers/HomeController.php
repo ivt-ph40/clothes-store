@@ -34,7 +34,9 @@ class HomeController extends Controller
         $cateChild = Category::where('parent_id', '!=', 0)->get();
         $products = Product::latest()->take(8)->get();
         $trending = Product::where('trending', 1)->take(8)->get();
-        return view('front-end.home', compact('categories', 'cateChild', 'products', 'trending'));
+        $slide = Slide::all();
+        // dd($slide);
+        return view('front-end.home', compact('categories', 'cateChild', 'products', 'trending', 'slide'));
     }
     public function search(Request $request){
         $search = $request->search;
@@ -43,13 +45,25 @@ class HomeController extends Controller
         })->paginate(10);
         return view('back-end.search', compact('result', 'search'));
     }
-    public function autocompleteAjax(Request $request){
+    public function miniSearchAutocompleteAjax(Request $request){
         $data = $request->get('query');
         if($data){
             $products = Product::with('productImage')->where('name', 'like', '%'.$data.'%')->get();
-            $output = '<ul class="style="display:block;position:absolute;width: 482px;top: 120px;left: 14px;z-index:999">';
+            $output = '<ul class="dropdown-menu" style="display:block;position:absolute;width:330px;top:120px;left:14px;">';
             foreach($products as $product){
-                $output .= '<li class="search-product-list pt-1 pb-1 pl-3">'.$product->name.'</li>';
+                $output .= '<li class="search-product-list  pt-2 pr-3 pb-2 pl-3">'.$product->name.'</li>';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+    public function searchAutocompleteAjax(Request $request){
+        $data = $request->get('query');
+        if($data){
+            $products = Product::with('productImage')->where('name', 'like', '%'.$data.'%')->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:absolute; width:670px">';
+            foreach($products as $product){
+                $output .= '<li class="search-product-list pt-2 pr-3 pb-2 pl-3">'.$product->name.'</li>';
             }
             $output .= '</ul>';
             echo $output;

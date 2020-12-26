@@ -1,7 +1,7 @@
 @extends('front-end.layouts.master')
 
 @section('title')
-    <title>Chi tiết sản phẩm</title>
+    <title>Trang khách hàng</title>
 @endsection
 
 @section('content')
@@ -78,9 +78,7 @@
 							@endphp
 						</li>
                     </ul>
-                    <button class="btn btn-outline-dark btn-sm">
-                        <a href="">Sửa thông tin của tôi</a>
-                    </button>
+					<a href="{{route('user.edit', \Auth::user()->id)}}" class="btn btn-outline-dark btn-sm">Sửa thông tin của tôi</a>
                 </div>
                 
             </div>

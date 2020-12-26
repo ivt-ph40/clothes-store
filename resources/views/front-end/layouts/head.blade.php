@@ -11,7 +11,8 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-	<link href="{{asset('web/css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+	{{-- <link href="{{asset('web/css/bootstrap.css')}}" rel='stylesheet' type='text/css' /> --}}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href="{{asset('web/css/login_overlay.css')}}" rel='stylesheet' type='text/css' />
 	<link href="{{asset('web/css/style6.css')}}" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="{{asset('web/css/shop.css')}}" type="text/css" />
