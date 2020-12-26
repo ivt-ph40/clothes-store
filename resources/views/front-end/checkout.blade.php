@@ -162,7 +162,7 @@
 												<div class="controls">
 													<label class="control-label">Địa chỉ<i style="color:red">*</i> </label>
 													@if(\Auth::check())
-													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="{{\Auth::user()->address->first()->address1}}">
+													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="{{\Auth::user()->address->address1}}">
 													@else
 													<input class="form-control" type="text" name="address" placeholder="Vui lòng nhập địa chỉ" value="">@endif
 													@if ($errors->has('address'))

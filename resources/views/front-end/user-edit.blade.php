@@ -50,7 +50,14 @@
                                     <div class="first-row form-group">
 										<div class="controls">
 											<label class="control-label">Địa chỉ<i style="color:red">*</i></label>
-											<input class="billing-address-name form-control" type="text" name="address1" placeholder="Vui lòng nhập địa chỉ" value="{{$user->address->address1}}">
+											<input class="billing-address-name form-control" type="text" name="address1" placeholder="Vui lòng nhập địa chỉ"
+											value="@php
+											if (\Auth::user()->address == null) {
+												# code...
+											} else {
+												echo \Auth::user()->address->address1;
+											}
+											@endphp">
 										</div>
 									</div>
                                     <button class="submit check_out">Sửa thông tin</button>
