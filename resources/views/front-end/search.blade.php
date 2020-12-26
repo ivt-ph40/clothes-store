@@ -1,23 +1,15 @@
 @extends('front-end.layouts.master')
 
 @section('title')
-    <title>Clothes Store</title>
+    <title>Tìm kiếm</title>
+@endsection
+
+@section('a')
+	Tìm kiếm
 @endsection
 
 @section('content')
-	<div class="banner_inner">
-			<div class="services-breadcrumb">
-				<div class="inner_breadcrumb">
-					<ul class="short">
-						<li>
-							<a href="{{route('trang-chu')}}">Trang chủ</a>
-							<i>|</i>
-						</li>
-						<li>Shop</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+	@include('front-end.layouts.banner')
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
 			<div class="container-fluid">
 				<div class="inner-sec-shop px-lg-4 px-3">
@@ -34,7 +26,6 @@
 												<img src="{{asset('web/images/banner4.jpg')}}" alt="">
 											</div>
 								<div class="row">
-									<!-- /womens -->
 									@foreach($search_products as $product)
 									<div class="col-md-3 product-men women_two shop-gd" style="padding: 8px;">
 										<div class="product-googles-info googles">
@@ -61,13 +52,10 @@
 															</div>
 														</div>
 														<div class="googles single-item hvr-outline-out">
-																<input type="hidden" name="cmd" value="_cart">
-																<input type="hidden" name="add" value="1">
-																<input type="hidden" name="googles_item" value="Farenheit">
-																<input type="hidden" name="amount" value="575.00">
 																<button data-id="{{$product->id}}" type="submit" class="googles-cart pgoogles-cart btn-add-to-cart">
 																	<i class="fas fa-cart-plus"></i>
-																</button>														</div>
+																</button>											
+														</div>
 													</div>
 													<div class="clearfix"></div>
 												</div>
@@ -78,7 +66,6 @@
 								</div>
 							</div>
 						</div>
-						<!--//product right-->
 					</div>
 				</div>
 			</div>

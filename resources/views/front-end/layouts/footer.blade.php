@@ -1,7 +1,7 @@
 <footer class="py-lg-5 py-3">
 		<div class="container-fluid px-lg-5 px-3">
 			<div class="row footer-top-w3layouts">
-				<div class="col-lg-3 footer-grid-w3ls">
+				<div class="col-lg-4 footer-grid-w3ls">
 					<div class="footer-title">
 						<h3>Giới thiệu</h3>
 					</div>
@@ -42,7 +42,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-3 footer-grid-w3ls">
+				<div class="col-lg-4 footer-grid-w3ls">
 					<div class="footer-title">
 						<h3>Liên hệ</h3>
 					</div>
@@ -58,9 +58,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 footer-grid-w3ls">
+				<div class="col-lg-4 footer-grid-w3ls">
 					<div class="footer-title">
-						<h3>Quick Links</h3>
+						<h3>Liên kết nhanh</h3>
 					</div>
 					<ul class="links">
 						<li>
@@ -70,32 +70,17 @@
 							<a href="{{route('gioi-thieu')}}">Giới thiệu</a>
 						</li>
 						<li>
-							<a href="{{route('san-pham')}}">Shop</a>
+							<a href="{{route('san-pham')}}">Sản Phẩm</a>
 						</li>
 						<li>
-							<a href="{{route('contact')}}">Contact Us</a>
+							<a href="{{route('contact')}}">Liên hệ</a>
 						</li>
 					</ul>
 				</div>
-				<div class="col-lg-3 footer-grid-w3ls">
-					<div class="footer-title">
-						<h3>ĐĂNG KÝ NHẬN TIN TỪ CHÚNG TÔI</h3>
-					</div>
-					<div class="footer-text">
-						<p>Đăng ký nhận thông tin và nhận nhiều ưu đãi từ BẢNH STORE</p>
-						<form action="#" method="post">
-							<input class="form-control" type="email" name="Email" placeholder="Nhập email của bạn..." required="">
-							<button class="btn1">
-								<i class="far fa-envelope" aria-hidden="true"></i>
-							</button>
-							<div class="clearfix"> </div>
-						</form>
-					</div>
-				</div>
 			</div>
 			<div class="copyright-w3layouts mt-4">
-				<p class="copy-right text-center ">&copy; 2018 Goggles. All Rights Reserved | Design by
-					<a href="http://w3layouts.com/"> W3layouts </a>
+				<p class="copy-right text-center ">&copy; 2020 Bảnh Store
+					<a href="http://w3layouts.com/"> Thịnh Tiến </a>
 				</p>
 			</div>
 		</div>

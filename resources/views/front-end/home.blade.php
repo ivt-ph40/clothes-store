@@ -9,9 +9,7 @@
 	<div class="container">
 		<img class="d-block w-100" src="{{asset($slide->photo_path)}}" alt="First slide">
 	</div>
-			
 	@endforeach
-
 	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
 		<div class="container-fluid">
 			<div class="inner-sec-shop px-lg-4 px-3">
@@ -43,10 +41,6 @@
 											</div>
 										</div>
 										<div class="googles single-item hvr-outline-out">
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="googles_item" value="Farenheit">
-												<input type="hidden" name="amount" value="575.00">
 												<button type="submit" class="googles-cart pgoogles-cart btn-add-to-cart" data-id="{{$product->id}}">
 													<i class="fas fa-cart-plus"></i>
 												</button>
@@ -93,10 +87,6 @@
 															</div>
 														</div>
 														<div class="googles single-item hvr-outline-out">
-																<input type="hidden" name="cmd" value="_cart">
-																<input type="hidden" name="add" value="1">
-																<input type="hidden" name="googles_item" value="Fastrack Aviator">
-																<input type="hidden" name="amount" value="325.00">
 																<button type="submit" class="googles-cart pgoogles-cart btn-add-to-cart" data-id="{{$product->id}}">
 																	<i class="fas fa-cart-plus"></i>
 																</button>
